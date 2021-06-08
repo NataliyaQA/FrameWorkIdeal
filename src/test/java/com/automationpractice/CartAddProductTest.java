@@ -1,207 +1,205 @@
 package com.automationpractice;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pageObjects.CartPage;
-import pageObjects.MyAccountPage;
-import pageObjects.SignInPage;
+import pageObjects.objects.rewritten.CartPageNew;
 import utils.AutomationWait;
-import utils.MainMethods;
-import wrapper.Wrapper;
 
-import java.awt.*;
 import java.text.DecimalFormat;
 
 import static org.testng.Assert.assertTrue;
+import static org.testng.AssertJUnit.assertEquals;
 
 //15 tests
 
 public class CartAddProductTest extends BaseTestAbstractClass {
     String stringUrlMainPage = "http://automationpractice.com/index.php";
-    CartPage cartPage;
-    MyAccountPage myAccountPage;
-    SignInPage signInPage;
-    AutomationWait automationWait;
-    MainMethods mainMethods;
+    CartPageNew cartPageNew = new CartPageNew(driver);
+
+    AutomationWait automationWait = new AutomationWait();
     int quantity = 2;
 
     @BeforeMethod
     void setUpMethod() throws InterruptedException {
         driver.get(stringUrlMainPage);
-        cartPage = new CartPage(driver);
+        //CartPageNew cartPageNew = new CartPageNew(driver);
 
-        Wrapper.getFindFluentWait();
+        Thread.sleep(5000);
+        //Wrapper.getFindFluentWait();
     }
 
-    @AfterMethod
-    void cleanCart() throws InterruptedException, AWTException {
+//    @AfterMethod
+//    void cleanCart() throws InterruptedException, AWTException {
 //        Thread.sleep(5000);
-       mainMethods.clickAnyWhere();
+//        generalSeleniumMethods.clickAnyWhere();
 //        Thread.sleep(5000);
+//
+//        while (cartPageNew.cartEmptyDisplayed() != true) {
+//            cartPageNew.hoverCartDropDown();
+//            cartPageNew.clickCrossIconCart();
+//        }
+//    }
 
-        while (cartPage.cartEmptyDisplayed() != true) {
-            cartPage.hoverCartDropDown();
-            cartPage.clickCrossIconCart();
-        }
-    }
-
-    @Test
+    @Test //passed
     public void findFadedShortSleeveTshirts() {
-        assertTrue(cartPage.fadedShortSleeveTshirtsDisplayed(), "product is not found");
+        assertTrue(cartPageNew.fadedShortSleeveTshirtsDisplayed(), "product is not found");
     }
 
-    @Test
+    @Test //passed
     public void findBlouse() {
-        assertTrue(cartPage.blouseDisplayed(), "product is not found");
+        assertTrue(cartPageNew.blouseDisplayed(), "product is not found");
     }
 
-    @Test
+    @Test //passed
     public void findPrintedDress() {
-        assertTrue(cartPage.printedDressDisplayed(), "product is not found");
+        assertTrue(cartPageNew.printedDressDisplayed(), "product is not found");
     }
 
-    @Test
+    @Test //passed
     public void findPrintedDressTwo() {
-        assertTrue(cartPage.printedDressTwoDisplayed(), "product is not found");
+        assertTrue(cartPageNew.printedDressTwoDisplayed(), "product is not found");
     }
 
-    @Test
+    @Test //passed
     public void findPrintedSummerDress() {
-        assertTrue(cartPage.printedSummerDressDisplayed(), "product is not found");
+        assertTrue(cartPageNew.printedSummerDressDisplayed(), "product is not found");
     }
 
-    @Test
+    @Test //passed
     public void findPrintedSummerDressTwo() {
-        assertTrue(cartPage.printedSummerDressTwoDisplayed(), "product is not found");
+        assertTrue(cartPageNew.printedSummerDressTwoDisplayed(), "product is not found");
     }
 
-    @Test
+    @Test //passed
     public void findPrintedChiffonDress() {
-        assertTrue(cartPage.printedChiffonDressDisplayed(), "product is not found");
+        assertTrue(cartPageNew.printedChiffonDressDisplayed(), "product is not found");
     }
 
-    @Test
+    @Test //passed
     public void addToCartProductFromPlp() throws InterruptedException {
-        cartPage.hoverFadedShortSleeve();
-        cartPage.clickAddToCartFirstProduct();
-        Assert.assertEquals(cartPage.alertTextAddToCart(), cartPage.ADD_TO_CART_MODAL);
+        cartPageNew.hoverFadedShortSleeve();
+        Thread.sleep(5000);
+        cartPageNew.clickAddToCartFirstProduct();
+        assertEquals(cartPageNew.alertTextAddedToCartModal(), cartPageNew.ADD_TO_CART_MODAL);
     }
 
-    @Test
+    @Test // failed
     public void addToCartFromPdp() throws InterruptedException {
-        cartPage.clickProductOne();
-        cartPage.clickAddToCartFromPdp();
-        Assert.assertEquals(cartPage.alertTextAddToCart(), cartPage.ADD_TO_CART_MODAL);
+        cartPageNew.clickProductOne();
+        Thread.sleep(1000);
+        cartPageNew.clickAddToCartFromPdp();
+        Assert.assertEquals(cartPageNew.alertTextAddedToCartModal(), cartPageNew.ADD_TO_CART_MODAL);
     }
 
-    @Test //passed with issue
+    @Test //
     public void addToCartFromPdpSix() throws InterruptedException {
-        cartPage.clickProductOne();
-        cartPage.clickPlusFive();
-        cartPage.clickAddToCartFromPdp();
+        cartPageNew.clickProductOne();
+        Thread.sleep(1000);
+        cartPageNew.clickPlusFive();
+        cartPageNew.clickAddToCartFromPdp();
         Thread.sleep(15000);
-        Assert.assertEquals(cartPage.alertTextThereAreInTheCart(), cartPage.THERE_ARE_IN_THE_CART);
-        System.out.println(cartPage.alertTextThereAreInTheCart());
+        Assert.assertEquals(cartPageNew.alertTextThereAreInTheCart(), cartPageNew.THERE_ARE_IN_THE_CART);
+        System.out.println(cartPageNew.alertTextThereAreInTheCart());
     }
 
-    @Test
+    @Test //passed
     public void priceTwoProducts() throws InterruptedException {
-        cartPage.clickProductOne();
-        cartPage.clickPlus();
-        cartPage.clickAddToCartFromPdp();
-        Assert.assertEquals(cartPage.textToDigitsPrice() * quantity, cartPage.textToDigitsTotalAddedProduct());
+        cartPageNew.clickProductOne();
+        Thread.sleep(1000);
+        cartPageNew.clickPlus();
+        cartPageNew.clickAddToCartFromPdp();
+        Assert.assertEquals(cartPageNew.textToDigitsPrice() * quantity, cartPageNew.textToDigitsTotalAddedProductModal());
     }
 
     @Test //The bug: "Continue Shopping" button does not work
     public void priceTwoDifferentProducts() throws InterruptedException {
-        cartPage.clickProductOne();
-        cartPage.clickPlus();
-        float firstPrice = cartPage.textToDigitsPrice() * quantity;
-        cartPage.clickAddToCartFromPdp();
-        cartPage.clickContinueShopping();
+        cartPageNew.clickProductOne();
+        cartPageNew.clickPlus();
+        float firstPrice = cartPageNew.textToDigitsPrice() * quantity;
+        cartPageNew.clickAddToCartFromPdp();
+        cartPageNew.clickContinueShopping();
         Thread.sleep(7000);
-        cartPage.clickProductTwo();
+        cartPageNew.clickProductTwo();
         Thread.sleep(1000);
-        cartPage.clickPlus();
+        cartPageNew.clickPlus();
         Thread.sleep(5000);
-        float secondPrice = cartPage.textToDigitsPrice() * quantity;
-        cartPage.clickAddToCartFromPdp();
+        float secondPrice = cartPageNew.textToDigitsPrice() * quantity;
+        cartPageNew.clickAddToCartFromPdp();
         Thread.sleep(5000);
 
-        Assert.assertEquals((firstPrice + secondPrice), cartPage.textToDigitsTotalAddedProduct());
+        Assert.assertEquals((firstPrice + secondPrice), cartPageNew.textToDigitsTotalAddedProductModal());
     }
 
-    @Test
+    @Test //passed
     public void priceTwoDifferentProductsTwo() throws InterruptedException {
-        cartPage.clickProductOne();
+        cartPageNew.clickProductOne();
         Thread.sleep(1000);
-        cartPage.clickPlus();
+        cartPageNew.clickPlus();
         Thread.sleep(2000);
-        float firstPrice = cartPage.textToDigitsPrice() * quantity;
-        cartPage.clickAddToCartFromPdp();
+        float firstPrice = cartPageNew.textToDigitsPrice() * quantity;
+        cartPageNew.clickAddToCartFromPdp();
         Thread.sleep(2000);
-        cartPage.clickCrossIcon();
+        cartPageNew.clickCrossIcon();
 
-        cartPage.clickLogo();
+        cartPageNew.clickLogo();
         Thread.sleep(2000);
 
-        cartPage.clickProductTwo();
+        cartPageNew.clickProductTwo();
         Thread.sleep(1000);
-        cartPage.clickPlus();
+        cartPageNew.clickPlus();
         Thread.sleep(2000);
-        float secondPrice = cartPage.textToDigitsPrice() * quantity;
-        cartPage.clickAddToCartFromPdp();
+        float secondPrice = cartPageNew.textToDigitsPrice() * quantity;
+        cartPageNew.clickAddToCartFromPdp();
         Thread.sleep(2000);
         //System.out.println(cartPage.textToDigitsTotalAddedProducts());
 
         Assert.assertEquals((Float.parseFloat(new DecimalFormat("0.00").
                 format(firstPrice + secondPrice))), Float.parseFloat(new DecimalFormat("0.00").
-                format(cartPage.textToDigitsTotalAddedProducts()))); //actual, expected
+                format(cartPageNew.textToDigitsTotalProductsAddedAddedToCartModal()))); //actual, expected
     }
 
-    @Test
+    @Test // failed
     public void makeCartEmpty() throws InterruptedException {
-        cartPage.clickProductOne();
+        cartPageNew.clickProductOne();
         Thread.sleep(1000);
 
-        cartPage.clickAddToCartFromPdp();
+        cartPageNew.clickAddToCartFromPdp();
         Thread.sleep(5000);
-        cartPage.clickCrossIcon();
+        cartPageNew.clickCrossIcon();
 
-        cartPage.hoverCartDropDown();
+        cartPageNew.hoverCartDropDown();
         Thread.sleep(5000);
-        cartPage.clickCrossIconCart();
+        cartPageNew.clickCrossIconCart();
         Thread.sleep(5000);
-        assertTrue(cartPage.cartEmptyDisplayed());
+        assertTrue(cartPageNew.cartEmptyDisplayed());
     }
 
-    @Test
+    @Test // failed
     public void makeCartEmptySeveralProducts() throws InterruptedException {
-        cartPage.hoverFadedShortSleeve();
+        cartPageNew.hoverFadedShortSleeve();
         Thread.sleep(1000);
-        cartPage.clickAddToCartFirstProduct();
+        cartPageNew.clickAddToCartFirstProduct();
         Thread.sleep(5000);
 
-        cartPage.clickCrossIcon();
+        cartPageNew.clickCrossIcon();
         Thread.sleep(5000);
 
-        cartPage.hoverPrintedDress();
+        cartPageNew.hoverPrintedDress();
         Thread.sleep(5000);
-        cartPage.clickAddToCartThirdProduct();
+        cartPageNew.clickAddToCartThirdProduct();
         Thread.sleep(5000);
 
-        cartPage.clickCrossIcon();
+        cartPageNew.clickCrossIcon();
         Thread.sleep(7000);
 
-        cartPage.hoverCartDropDown();
+        cartPageNew.hoverCartDropDown();
         Thread.sleep(5000);
-        cartPage.clickCrossIconCart();
+        cartPageNew.clickCrossIconCart();
         Thread.sleep(5000);
-        cartPage.clickCrossIconCart();
+        cartPageNew.clickCrossIconCart();
         Thread.sleep(5000);
 
-        assertTrue(cartPage.cartEmptyDisplayed());
+        assertTrue(cartPageNew.cartEmptyDisplayed());
     }
 }
