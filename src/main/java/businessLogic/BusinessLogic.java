@@ -12,13 +12,13 @@ public class BusinessLogic  {
 
     public BusinessLogic(WebDriver driver) {
         this.driver = driver;
-        homePageNew = new HomePageNew(driver);
+        homePageNew = new HomePageNew();
         //super(driver);
     }
 
     public void loginUser() {
         driver.get(stringUrl);
-        homePageNew = new HomePageNew(driver);
+        homePageNew = new HomePageNew();
 
         homePageNew.emailSendKey();
         homePageNew.passwordSendKey();

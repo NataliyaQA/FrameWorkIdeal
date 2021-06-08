@@ -7,12 +7,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+import pageObjects.objects.rewritten.BasePageObject;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GeneralSeleniumMethods {
+public class GeneralSeleniumMethods extends BasePageObject {
     public WebDriver driver;
 
     String textFieldAlphabetic = RandomStringUtils.randomAlphabetic(5);

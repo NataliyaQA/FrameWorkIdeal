@@ -5,19 +5,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import wrapperMethods.GeneralSeleniumMethods;
 
-public class HomePageNew {
-    public WebDriver driver;
+public class HomePageNew extends BasePageObject{
     GeneralSeleniumMethods generalSeleniumMethods;
 
     public static final String NAME = "TestName";
     public static final String SURNAME = "TestName";
     public static final String EMAIL = "qwe+3@gmail.com";
     public static final String PASSWORD = "123456";
-
-    // Constructor
-    public HomePageNew(WebDriver driver) {
-       generalSeleniumMethods  = new GeneralSeleniumMethods(driver);
-    }
 
     // signInButton
     @FindBy(xpath = "//button[@id='SubmitLogin']")

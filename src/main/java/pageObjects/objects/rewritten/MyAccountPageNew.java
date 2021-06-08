@@ -38,7 +38,7 @@ public class MyAccountPageNew {
     public MyAccountPageNew(WebDriver driver) {
         this.driver = driver;
          generalSeleniumMethods = new GeneralSeleniumMethods(driver);
-         homePageNew = new HomePageNew(driver);
+         homePageNew = new HomePageNew();
         //This initElements method will create all WebElements
         PageFactory.initElements(driver, this); //Question: why we need it? Should it be here or in MainMethods.java?
         // Is it the same to "NameClass nameClass = new NameClass();" ?
