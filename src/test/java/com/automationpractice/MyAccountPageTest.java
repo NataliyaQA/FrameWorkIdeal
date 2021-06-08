@@ -4,22 +4,22 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pageObjects.MyAccountPage;
-import pageObjects.SignInPage;
-import utils.MainMethods;
+import pageObjects.objects.rewritten.SignInPageNew;
+import pageObjects.objects.rewritten.MyAccountPageNew;
+import wrapperMethods.GeneralSeleniumMethods;
 
 
 // 22 tests
 public class MyAccountPageTest extends BaseTestAbstractClass {
     String stringUrl = "http://automationpractice.com/index.php?controller=authentication&back=my-account";
-    MyAccountPage myAccountPage;
-    SignInPage signInPage;
-    MainMethods mainMethods;
+    MyAccountPageNew myAccountPage = new MyAccountPageNew(driver);
+    SignInPageNew signInPageNew = new SignInPageNew(driver);
+    GeneralSeleniumMethods generalSeleniumMethods = new GeneralSeleniumMethods(driver);
 
     @BeforeMethod // Question: difference with BeforeTest
     void setUpMethod() throws InterruptedException {
         driver.get(stringUrl);
-        myAccountPage = new MyAccountPage(driver);
+        //myAccountPage = new MyAccountPageDelete(driver);
 
         Thread.sleep(5000);
         myAccountPage.emailSendKey();
@@ -134,36 +134,36 @@ public class MyAccountPageTest extends BaseTestAbstractClass {
     @Test //passed
     public void homePageUrl() {
         myAccountPage.homeButtonClick();
-        Assert.assertEquals(mainMethods.getUrl(), myAccountPage.HOME_PAGE_URL);
+        Assert.assertEquals(generalSeleniumMethods.getUrl(), myAccountPage.HOME_PAGE_URL);
     }
 
     @Test //passed
     public void orderHistoryUrl() {
         myAccountPage.orderHistoryClick();
-        Assert.assertEquals(mainMethods.getUrl(), myAccountPage.ORDER_HISTORY_URL);
+        Assert.assertEquals(generalSeleniumMethods.getUrl(), myAccountPage.ORDER_HISTORY_URL);
     }
 
     @Test //passed
     public void creditSlipsUrl() {
         myAccountPage.creditSlipsClick();
-        Assert.assertEquals(mainMethods.getUrl(), myAccountPage.CREDIT_SLIPS_URL);
+        Assert.assertEquals(generalSeleniumMethods.getUrl(), myAccountPage.CREDIT_SLIPS_URL);
     }
 
     @Test //passed
     public void myAddressUrl() {
         myAccountPage.myAddressClick();
-        Assert.assertEquals(mainMethods.getUrl(), myAccountPage.MY_ADDRESS_URL);
+        Assert.assertEquals(generalSeleniumMethods.getUrl(), myAccountPage.MY_ADDRESS_URL);
     }
 
     @Test //passed
     public void personalInfoUrl() {
         myAccountPage.personalInfoClick();
-        Assert.assertEquals(mainMethods.getUrl(), myAccountPage.PERSONAL_INFO_URL);
+        Assert.assertEquals(generalSeleniumMethods.getUrl(), myAccountPage.PERSONAL_INFO_URL);
     }
 
     @Test //passed
     public void wishListUrl() {
         myAccountPage.wishListClick();
-        Assert.assertEquals(mainMethods.getUrl(), myAccountPage.WISH_LIST_URL);
+        Assert.assertEquals(generalSeleniumMethods.getUrl(), myAccountPage.WISH_LIST_URL);
     }
 }

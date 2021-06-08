@@ -26,7 +26,6 @@ public class ProductObject {
     }
 
     //Constructor (Alt + ins)
-
     public ProductObject(String nameOfProduct, float price) {
         this.nameOfProduct = nameOfProduct;
         this.price = price;

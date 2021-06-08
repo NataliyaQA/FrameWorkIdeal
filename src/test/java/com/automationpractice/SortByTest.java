@@ -3,56 +3,53 @@ package com.automationpractice;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pageObjects.MyAccountPage;
-import pageObjects.SortBy;
+import pageObjects.objects.rewritten.SortByNew;
 import pageObjects.objects.ProductObject;
-import utils.MainMethods;
-import wrapper.Wrapper;
+import pageObjects.objects.rewritten.MyAccountPageNew;
+import wrapperMethods.GeneralSeleniumMethods;
 
 import java.util.Comparator;
 import java.util.List;
 
 public class SortByTest extends BaseTestAbstractClass {
     String stringUrlWomenPage = "http://automationpractice.com/index.php?id_category=3&controller=category";
-    SortBy sortBy;
-    MyAccountPage myAccountPage;
-    MainMethods mainMethods;
+    SortByNew sortByNew = new SortByNew(driver);
+    MyAccountPageNew myAccountPage = new MyAccountPageNew(driver);
+    GeneralSeleniumMethods generalSeleniumMethods = new GeneralSeleniumMethods(driver);
 
     @BeforeMethod
     void setUpMethod() throws InterruptedException {
         driver.get(stringUrlWomenPage);
-        sortBy = new SortBy(driver);
-        myAccountPage = new MyAccountPage(driver);
     }
 
     @Test //passed
     public void viewGridIconIsEnabled() {
-        Assert.assertTrue(sortBy.viewGridIconIsEnabled());
+        Assert.assertTrue(sortByNew.viewGridIconIsEnabled());
     }
 
     @Test //failed
     public void viewListIconIsEnabled() {
-        Assert.assertFalse(sortBy.viewListIconIsEnabled());
+        Assert.assertFalse(sortByNew.viewListIconIsEnabled());
     }
 
     @Test
     public void addToWishListOneWithoutLogin() {
-        sortBy.hoverFirstProduct();
-        sortBy.addToWishListOneClick();
+        sortByNew.hoverFirstProduct();
+        sortByNew.addToWishListOneClick();
 
-        Assert.assertTrue(sortBy.alertAddToWishListIsEnabled());
-        Assert.assertEquals(sortBy.alertTextWishList(), sortBy.ALERT_ADD_TO_WISHLIST);
+        Assert.assertTrue(sortByNew.alertAddToWishListIsEnabled());
+        Assert.assertEquals(sortByNew.alertTextWishList(), sortByNew.ALERT_ADD_TO_WISHLIST);
     }
 
     @Test //Question "no such element"? why isDisplayed does not work
     public void closeToWishListOneWithoutLogin() throws InterruptedException {
-        sortBy.hoverFirstProduct();
-        sortBy.addToWishListOneClick();
+        sortByNew.hoverFirstProduct();
+        sortByNew.addToWishListOneClick();
 
-        sortBy.closeAlertAddToWishListClick();
+        sortByNew.closeAlertAddToWishListClick();
         Thread.sleep(5000);
         //Assert.assertFalse(sortBy.alertAddToWishListIsDisplayed());
-        Assert.assertEquals(mainMethods.getUrl(), stringUrlWomenPage);
+        Assert.assertEquals(generalSeleniumMethods.getUrl(), stringUrlWomenPage);
     }
 
     @Test
@@ -62,13 +59,13 @@ public class SortByTest extends BaseTestAbstractClass {
         myAccountPage.passwordSendKey();
         myAccountPage.signInButtonClick();
         Thread.sleep(5000);
-        sortBy.womenButtonClick();
+        sortByNew.womenButtonClick();
 
-        sortBy.hoverFirstProduct();
-        sortBy.addToWishListOneClick();
+        sortByNew.hoverFirstProduct();
+        sortByNew.addToWishListOneClick();
 
-        Assert.assertTrue(sortBy.alertAddedToWishListIsEnabled());
-        Assert.assertEquals(sortBy.alertTextWishListAdded(), sortBy.ALERT_ADDED_TO_WISHLIST);
+        Assert.assertTrue(sortByNew.alertAddedToWishListIsEnabled());
+        Assert.assertEquals(sortByNew.alertTextWishListAdded(), sortByNew.ALERT_ADDED_TO_WISHLIST);
     }
 
     @Test //Question "no such element"? why isDisplayed does not work
@@ -78,31 +75,32 @@ public class SortByTest extends BaseTestAbstractClass {
         myAccountPage.passwordSendKey();
         myAccountPage.signInButtonClick();
         Thread.sleep(5000);
-        sortBy.womenButtonClick();
+        sortByNew.womenButtonClick();
 
-        sortBy.hoverFirstProduct();
-        sortBy.addToWishListOneClick();
+        sortByNew.hoverFirstProduct();
+        sortByNew.addToWishListOneClick();
 
-        sortBy.closeAlertAddToWishListClick();
+        sortByNew.closeAlertAddToWishListClick();
         Thread.sleep(5000);
         //Assert.assertFalse(sortBy.alertAddToWishListIsDisplayed());
-        Assert.assertEquals(mainMethods.getUrl(), stringUrlWomenPage);
+        Assert.assertEquals(generalSeleniumMethods.getUrl(), stringUrlWomenPage);
     }
 
     @Test // does not work correctly, failed (real bug), but shows error as:
 //    java.lang.AssertionError: Lists differ at element [0]: Faded Short Sleeve T-shirts != Faded Short Sleeve T-shirts
 //    Expected :Faded Short Sleeve T-shirts
 //    Actual   :Faded Short Sleeve T-shirts
-    public void sortProductsNames(){
-        List<ProductObject> expected = sortBy.getListOfAllElementsWomenPageInitial();
-        sortBy.selectValueDropDownNameAZ();
+    public void sortProductsNames() throws InterruptedException {
+        List<ProductObject> expected = sortByNew.getListOfAllElementsWomenPageInitial();
+        sortByNew.selectValueDropDownNameAZ();
 
-        Wrapper.getFindFluentWait();
+        Thread.sleep(5000);
+        //Wrapper.getFindFluentWait();
 
         //expected.sort();
         //expected.stream().sorted(Comparator.comparing(ProductObject::getNameOfProduct)).forEach(System.out::println);
 
-        List<ProductObject> actual = sortBy.getListOfAllElementsWomenPageSecond();
+        List<ProductObject> actual = sortByNew.getListOfAllElementsWomenPageSecond();
 
         int getFirstProduct = 0;
         Assert.assertEquals(actual.get(getFirstProduct)

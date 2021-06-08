@@ -19,4 +19,19 @@ public class tmp extends BaseTestAbstractClass {
     public void googleTest() {
         Assert.assertEquals(driver.getTitle(), "Google");
     }
-}
+
+//    @Test
+//    public void setUp() {
+//        System.setProperty("webdriver.chrome.driver", "C:\\Data\\Temp\\FrameWorkTemplate\\src\\main\\resources\\drivers\\chromedriver.exe"); // moved to Wrapper
+//        WebDriver driver = new ChromeDriver();
+////        System.setProperty("webdriver.gecko.driver", "C:\\Data\\Temp\\FrameWorkTemplate\\src\\main\\resources\\drivers\\geckodriver.exe"); // moved to Wrapper
+////        WebDriver driver = new FirefoxDriver();
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        //driver.manage().window().maximize();
+//        driver.get("http://automationpractice.com/");
+
+        //Deleting all the cookies
+        //driver.manage().deleteAllCookies();
+    }
+
+

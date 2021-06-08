@@ -1,14 +1,15 @@
 package com.automationpractice;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import wrapper.Wrapper;
+import wrapperBrowsers.WrapperBrowsers;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTestAbstractClass {
-    public WebDriver driver = Wrapper.getDriver();
+    public WebDriver driver = WrapperBrowsers.getDriver();
 
     @BeforeMethod
     public void setUp() {
@@ -17,6 +18,11 @@ public class BaseTestAbstractClass {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         //driver.manage().window().maximize();
         driver.get("http://automationpractice.com/");
+    }
+
+    @AfterMethod
+    public void after(){
+        driver.manage().deleteAllCookies();
     }
 
 //    @AfterTest
