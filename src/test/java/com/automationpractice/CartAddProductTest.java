@@ -15,11 +15,6 @@ import static org.testng.AssertJUnit.assertEquals;
 
 public class CartAddProductTest extends BaseTestAbstractClass {
     String stringUrlMainPage = "http://automationpractice.com/index.php";
-//    SignInPageNew signInPageNew = new SignInPageNew(driver);
-//    MyAccountPageNew myAccountPage = new MyAccountPageNew(driver);
-    //GeneralSeleniumMethods generalSeleniumMethods = new GeneralSeleniumMethods(driver); //odd
-//    BusinessLogic businessLogic = new BusinessLogic(driver);
-
     CartPageNew cartPageNew = new CartPageNew(driver);
 
     AutomationWait automationWait = new AutomationWait();
@@ -81,7 +76,7 @@ public class CartAddProductTest extends BaseTestAbstractClass {
         assertTrue(cartPageNew.printedChiffonDressDisplayed(), "product is not found");
     }
 
-    @Test //NullPointerException
+    @Test //passed
     public void addToCartProductFromPlp() throws InterruptedException {
         cartPageNew.hoverFadedShortSleeve();
         Thread.sleep(5000);
@@ -89,9 +84,10 @@ public class CartAddProductTest extends BaseTestAbstractClass {
         assertEquals(cartPageNew.alertTextAddedToCartModal(), cartPageNew.ADD_TO_CART_MODAL);
     }
 
-    @Test //
+    @Test // failed
     public void addToCartFromPdp() throws InterruptedException {
         cartPageNew.clickProductOne();
+        Thread.sleep(1000);
         cartPageNew.clickAddToCartFromPdp();
         Assert.assertEquals(cartPageNew.alertTextAddedToCartModal(), cartPageNew.ADD_TO_CART_MODAL);
     }
@@ -99,6 +95,7 @@ public class CartAddProductTest extends BaseTestAbstractClass {
     @Test //
     public void addToCartFromPdpSix() throws InterruptedException {
         cartPageNew.clickProductOne();
+        Thread.sleep(1000);
         cartPageNew.clickPlusFive();
         cartPageNew.clickAddToCartFromPdp();
         Thread.sleep(15000);
@@ -109,6 +106,7 @@ public class CartAddProductTest extends BaseTestAbstractClass {
     @Test //passed
     public void priceTwoProducts() throws InterruptedException {
         cartPageNew.clickProductOne();
+        Thread.sleep(1000);
         cartPageNew.clickPlus();
         cartPageNew.clickAddToCartFromPdp();
         Assert.assertEquals(cartPageNew.textToDigitsPrice() * quantity, cartPageNew.textToDigitsTotalAddedProductModal());
@@ -133,7 +131,7 @@ public class CartAddProductTest extends BaseTestAbstractClass {
         Assert.assertEquals((firstPrice + secondPrice), cartPageNew.textToDigitsTotalAddedProductModal());
     }
 
-    @Test //
+    @Test //passed
     public void priceTwoDifferentProductsTwo() throws InterruptedException {
         cartPageNew.clickProductOne();
         Thread.sleep(1000);
@@ -161,7 +159,7 @@ public class CartAddProductTest extends BaseTestAbstractClass {
                 format(cartPageNew.textToDigitsTotalProductsAddedAddedToCartModal()))); //actual, expected
     }
 
-    @Test //
+    @Test // failed
     public void makeCartEmpty() throws InterruptedException {
         cartPageNew.clickProductOne();
         Thread.sleep(1000);
@@ -177,7 +175,7 @@ public class CartAddProductTest extends BaseTestAbstractClass {
         assertTrue(cartPageNew.cartEmptyDisplayed());
     }
 
-    @Test //
+    @Test // failed
     public void makeCartEmptySeveralProducts() throws InterruptedException {
         cartPageNew.hoverFadedShortSleeve();
         Thread.sleep(1000);

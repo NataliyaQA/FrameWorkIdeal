@@ -3,7 +3,6 @@ package pageObjects.objects.rewritten;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import pageObjects.objects.WishListObject;
 import wrapperMethods.GeneralSeleniumMethods;
 
@@ -13,19 +12,21 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-public class WishListPageNew {
-    public WebDriver driver;
-    MyAccountPageNew myAccountPage = new MyAccountPageNew(driver);
-    GeneralSeleniumMethods generalSeleniumMethods = new GeneralSeleniumMethods(driver);
+public class WishListPageNew extends BasePageObject {
+    GeneralSeleniumMethods generalSeleniumMethods;
+    MyAccountPageNew myAccountPage;
 
     //Constants
     public static final String NAME_OF_WISHLIST_ONE = "Name Of WishList One";
     public static final String NAME_OF_WISHLIST_TWO = "Name Of WishList Two";
 
+    private WebDriver driver;
+
     //Constructor
-    public WishListPageNew(WebDriver driver){
+    public WishListPageNew(WebDriver driver) {
+        generalSeleniumMethods = new GeneralSeleniumMethods(driver);
+        myAccountPage = new MyAccountPageNew(driver);
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
     //wishListOne

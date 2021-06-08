@@ -24,7 +24,6 @@ public class OpenCloseMainPagesUrlTest extends BaseTestAbstractClass {
      */
     @Test(priority = 5) // re-written
     public void homePage() {
-
         Assert.assertEquals(searchHomePageElementsNew.getActualTitle(), searchHomePageElementsNew.HOME_PAGE_TITLE);
         Log.log("Test result: 'My Store' title is found and correct", LogType.INFO);
         Log.log("Priority 5", LogType.INFO);
@@ -35,7 +34,6 @@ public class OpenCloseMainPagesUrlTest extends BaseTestAbstractClass {
      */
     @Test(priority = 4, description = "this test about Women page") //#2 // re-written without logs
     public void womanPage() {
-
         redirectionUrlsNew.womenPagePutUrl(); //put URL into browser URL bar
         Assert.assertEquals(searchHomePageElementsNew.getActualTitle(), searchHomePageElementsNew.WOMEN_PAGE_TITLE); // compare an actual result and expected
         System.out.println("Test result: 'Women - My Store' title is found and correct");
@@ -47,7 +45,6 @@ public class OpenCloseMainPagesUrlTest extends BaseTestAbstractClass {
     @Test(priority = 3) // re-written without logs
     public void womanPageClick() {
         searchHomePageElementsNew.clickOnWomenMenuButton();
-
         Assert.assertEquals(redirectionUrlsNew.getWomenPageUrl(), redirectionUrlsNew.WOMEN_PAGE_URL, "URL is correct");
         System.out.println("Priority 3");
     }
@@ -58,8 +55,8 @@ public class OpenCloseMainPagesUrlTest extends BaseTestAbstractClass {
     @Test(priority = 2) // re-written without logs
     public void dressesPageClick() {
         searchHomePageElementsNew.clickOnDressesButton();
-
-        Assert.assertEquals(redirectionUrlsNew.getUrlDressesPage(), redirectionUrlsNew.DRESSES_PAGE_URL, "URL is correct");
+        Assert.assertEquals(redirectionUrlsNew.getUrlDressesPage(), redirectionUrlsNew.DRESSES_PAGE_URL,
+                "URL is correct");
         System.out.println("Priority 2");
     }
 
@@ -68,9 +65,11 @@ public class OpenCloseMainPagesUrlTest extends BaseTestAbstractClass {
      */
     @Test(priority = 2) // re-written without logs
     public void blousesOptionClick() {
+        searchHomePageElementsNew.hoverWomen();
         searchHomePageElementsNew.clickOnWomenMenuBlousesOption();
 
-        Assert.assertEquals(redirectionUrlsNew.getUrlBlouses(), redirectionUrlsNew.BLOUSES_PAGE_URL, "URL is correct");
+        Assert.assertEquals(redirectionUrlsNew.getUrlBlouses(), redirectionUrlsNew.BLOUSES_PAGE_URL,
+                "URL is correct");
         System.out.println("Priority 2");
     }
 
@@ -79,9 +78,11 @@ public class OpenCloseMainPagesUrlTest extends BaseTestAbstractClass {
      */
     @Test(priority = 2) // re-written without logs
     public void casualDressesOptionClick() {
+        searchHomePageElementsNew.hoverWomen();
         searchHomePageElementsNew.clickOnCasualDressesOption();
 
-        Assert.assertEquals(redirectionUrlsNew.getUrlCasualDresses(), redirectionUrlsNew.CASUAL_DRESSES_PAGE_URL, "URL is correct");
+        Assert.assertEquals(redirectionUrlsNew.getUrlCasualDresses(), redirectionUrlsNew.CASUAL_DRESSES_PAGE_URL,
+                "URL is correct");
         System.out.println("Priority 2");
     }
 
@@ -90,9 +91,11 @@ public class OpenCloseMainPagesUrlTest extends BaseTestAbstractClass {
      */
     @Test(priority = 2) // re-written without logs
     public void eveningDressesOptionClick() {
+        searchHomePageElementsNew.hoverWomen();
         searchHomePageElementsNew.clickOnEveningDressesOption();
 
-        Assert.assertEquals(redirectionUrlsNew.getUrlEveningDresses(), redirectionUrlsNew.EVENING_DRESSES_PAGE_URL, "URL is correct");
+        Assert.assertEquals(redirectionUrlsNew.getUrlEveningDresses(), redirectionUrlsNew.EVENING_DRESSES_PAGE_URL,
+                "URL is correct");
         System.out.println("Priority 2");
     }
 
@@ -101,9 +104,11 @@ public class OpenCloseMainPagesUrlTest extends BaseTestAbstractClass {
      */
     @Test(priority = 2) // re-written without logs
     public void summerDressesOptionClick() {
+        searchHomePageElementsNew.hoverWomen();
         searchHomePageElementsNew.clickOnSummerDressesOption();
 
-        Assert.assertEquals(redirectionUrlsNew.getUrlSummerDresses(), redirectionUrlsNew.SUMMER_DRESSES_PAGE_URL, "URL is correct");
+        Assert.assertEquals(redirectionUrlsNew.getUrlSummerDresses(), redirectionUrlsNew.SUMMER_DRESSES_PAGE_URL,
+                "URL is correct");
         System.out.println("Priority 2");
     }
 
@@ -113,7 +118,6 @@ public class OpenCloseMainPagesUrlTest extends BaseTestAbstractClass {
     @Test(priority = 1) // re-written without logs
     public void tShirtsPageClick() {
         searchHomePageElementsNew.clickOnTshirtsButton();
-
         Assert.assertEquals(redirectionUrlsNew.getTshirtsPageUrl(), redirectionUrlsNew.TSHIRTS_PAGE_URL, "URL is correct");
         System.out.println("Priority 1");
     }
@@ -124,7 +128,6 @@ public class OpenCloseMainPagesUrlTest extends BaseTestAbstractClass {
         @Test // re-written without logs
         public void threeDaysSaleBannerClick() {
             bannersPageNew.clickOnStaticBannerSix();
-
             Assert.assertEquals(redirectionUrlsNew.getUrlExternalPage(),
                     redirectionUrlsNew.EXTERNAL_PAGE_URL, "URL is correct");
             System.out.println("Three DaysSale Banner redirection");
@@ -136,7 +139,6 @@ public class OpenCloseMainPagesUrlTest extends BaseTestAbstractClass {
         @Test // failed
         public void summerCollectionBannerClick() {
             bannersPageNew.clickOnStaticBannerSeven();
-
             Assert.assertEquals(redirectionUrlsNew.getUrlExternalPage(),
                     redirectionUrlsNew.EXTERNAL_PAGE_URL, "URL is correct");
             System.out.println("Summer Collection Banner redirection");
@@ -148,7 +150,6 @@ public class OpenCloseMainPagesUrlTest extends BaseTestAbstractClass {
         @Test
         public void topTrendsBannerClick() {
             bannersPageNew.clickOnStaticBannerOne();
-
             Assert.assertEquals(redirectionUrlsNew.getUrlExternalPage(),
                     redirectionUrlsNew.EXTERNAL_PAGE_URL, "URL is correct");
             System.out.println("Top Trends Banner redirection");
@@ -157,10 +158,9 @@ public class OpenCloseMainPagesUrlTest extends BaseTestAbstractClass {
     /**
      * Check URL of External page after redirection via Static banner 4
      */
-        @Test
+        @Test //
         public void sunGlassesAndEyeWearBannerClick() {
             bannersPageNew.clickOnStaticBannerFour();
-
             Assert.assertEquals(redirectionUrlsNew.getUrlExternalPage(),
                     redirectionUrlsNew.EXTERNAL_PAGE_URL, "URL is correct");
             System.out.println("Sun Glasses & Eyewear Banner redirection");
@@ -172,7 +172,6 @@ public class OpenCloseMainPagesUrlTest extends BaseTestAbstractClass {
         @Test
         public void menCoatAndJacketsBannerClick() {
             bannersPageNew.clickOnStaticBannerTwo();
-
             Assert.assertEquals(redirectionUrlsNew.getUrlExternalPage(),
                     redirectionUrlsNew.EXTERNAL_PAGE_URL, "URL is correct");
             System.out.println("Men's Coat & Jackets Banner redirection");
@@ -184,7 +183,6 @@ public class OpenCloseMainPagesUrlTest extends BaseTestAbstractClass {
         @Test
         public void savvyTrendsHandBagsBannerClick() {
             bannersPageNew.clickOnStaticBannerFive();
-
             Assert.assertEquals(redirectionUrlsNew.getUrlExternalPage(),
                     redirectionUrlsNew.EXTERNAL_PAGE_URL, "URL is correct");
             System.out.println("Savvy Trends Handbags Banner redirection");
@@ -196,7 +194,6 @@ public class OpenCloseMainPagesUrlTest extends BaseTestAbstractClass {
         @Test
         public void womenCoatAndJacketsBannerClick() {
             bannersPageNew.clickOnStaticBannerThree();
-
             Assert.assertEquals(redirectionUrlsNew.getUrlExternalPage(),
                     redirectionUrlsNew.EXTERNAL_PAGE_URL, "URL is correct");
             System.out.println("Women's Coat & Jackets Banner redirection");
@@ -208,7 +205,6 @@ public class OpenCloseMainPagesUrlTest extends BaseTestAbstractClass {
         @Test //, enabled = false
         public void logoClick() {
             searchHomePageElementsNew.clickOnStaticLogo();
-
             Assert.assertEquals(redirectionUrlsNew.getUrlLogoPage(),
                     redirectionUrlsNew.LOGO_PAGE_URL, "URL is correct");
             System.out.println("'Home' page redirection");

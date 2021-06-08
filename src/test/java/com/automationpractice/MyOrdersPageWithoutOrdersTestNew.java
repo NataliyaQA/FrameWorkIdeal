@@ -1,67 +1,41 @@
 package com.automationpractice;
 
+import businessLogic.BusinessLogic;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pageObjects.objects.rewritten.MyAccountPageNew;
 import pageObjects.objects.rewritten.MyOrdersPageNew;
 import pageObjects.objects.rewritten.SignInPageNew;
-import pageObjects.objects.rewritten.MyAccountPageNew;
 import wrapperMethods.GeneralSeleniumMethods;
 
 // 15 tests
 public class MyOrdersPageWithoutOrdersTestNew extends BaseTestAbstractClass {
-    String pageMyOrdersUrl = "http://automationpractice.com/index.php?controller=history";
+    //String pageMyOrdersUrl = "http://automationpractice.com/index.php?controller=history";
     MyOrdersPageNew myOrdersPage = new MyOrdersPageNew(driver);
     MyAccountPageNew myAccountPage = new MyAccountPageNew(driver);
     GeneralSeleniumMethods generalSeleniumMethods = new GeneralSeleniumMethods(driver);
-
+    SignInPageNew signInPageNew = new SignInPageNew(driver);
+    BusinessLogic businessLogic = new BusinessLogic(driver);
 
     @BeforeMethod
-    void setUpMethod() throws InterruptedException {
-        driver.get(pageMyOrdersUrl);
-
-//        Thread.sleep(5000);
-//        myAccountPage.emailSendKey();
-//        myAccountPage.passwordSendKey();
-//        myAccountPage.signInButtonClick();
-//        myAccountPage.orderHistoryClick();
-//        Thread.sleep(5000);
-
-        SignInPageNew signInPageNew = new SignInPageNew(driver);
-        signInPageNew.inputEmail().createAnAccountButtonClick();
-        Thread.sleep(5000);
-        signInPageNew.inputValueFirstNameLetters();
-        signInPageNew.inputValueLastNameLetters();
-        signInPageNew.inputValueAllowedCompany();
-        signInPageNew.inputValuePassword("123456");
-        signInPageNew.inputValueAllowedAddress();
-        signInPageNew.inputValueAllowedCity();
-        Thread.sleep(5000);
-        signInPageNew.statesDropDownOptionByValue();
-        Thread.sleep(5000);
-        signInPageNew.inputValueAllowedZip();
-        signInPageNew.inputValueAllowedPhone();
-        signInPageNew.inputValueAllowedMobile();
-        signInPageNew.clickRegisterButton();
-        Thread.sleep(5000);
-
+    void setUpMethod(){
+        businessLogic.loginUser();
         myAccountPage.orderHistoryClick();
     }
 
-    @AfterMethod
-    void signOut() {
-        myAccountPage.signOutButtonClick();
-    }
+//    @AfterMethod
+//    void signOut() {
+//        myAccountPage.signOutButtonClick();
+//    }
 
-    @Test
+    @Test //passed
     public void orderHistoryNavigationOne() {
         Assert.assertEquals(myOrdersPage.orderHistoryNavigationOne(), myOrdersPage.ORDER_HISTORY_NAVIGATION_PAGE_ONE);
     }
 
     @Test
     public void orderHistoryNavigationTwo() throws InterruptedException {
-        //Thread.sleep(5000);
         Assert.assertEquals(myOrdersPage.orderHistoryNavigationTwo(), myOrdersPage.ORDER_HISTORY_NAVIGATION_PAGE_TWO);
     }
 

@@ -3,12 +3,10 @@ package pageObjects.objects.rewritten;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import wrapperMethods.GeneralSeleniumMethods;
 
-public class SearchHomePageElementsNew {
-    public WebDriver driver;
-    GeneralSeleniumMethods generalSeleniumMethods = new GeneralSeleniumMethods(driver);
+public class SearchHomePageElementsNew extends BasePageObject {
+    GeneralSeleniumMethods generalSeleniumMethods;
 
     public final String WOMEN_NAME = "WOMEN";
     public final String WOMEN_MENU_TOPS_SUBMENU_NAME = "TOPS";
@@ -25,9 +23,12 @@ public class SearchHomePageElementsNew {
 
     String stringUrl = "http://automationpractice.com/index.php?id_cms=4&controller=cms";
 
+    private WebDriver driver;
+
+    //Constructor
     public SearchHomePageElementsNew(WebDriver driver) {
+        generalSeleniumMethods = new GeneralSeleniumMethods(driver);
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
     //searchQueryTop

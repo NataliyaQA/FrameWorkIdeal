@@ -13,6 +13,12 @@ public class HomePageNew extends BasePageObject{
     public static final String EMAIL = "qwe+3@gmail.com";
     public static final String PASSWORD = "123456";
 
+    //Constructor
+    public HomePageNew(WebDriver driver) {
+        generalSeleniumMethods = new GeneralSeleniumMethods(driver);
+        //PageFactory.initElements(driver, this);
+    }
+
     // signInButton
     @FindBy(xpath = "//button[@id='SubmitLogin']")
     private WebElement signInButton;
@@ -38,7 +44,7 @@ public class HomePageNew extends BasePageObject{
     }
 
     // passwordField
-    @FindBy(xpath = "//input[@id='email']")
+    @FindBy(xpath = "//*[@id='passwd']")
     private WebElement passwordField;
 
     public void passwordSendKey() {

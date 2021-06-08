@@ -3,12 +3,10 @@ package pageObjects.objects.rewritten;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import wrapperMethods.GeneralSeleniumMethods;
 
-public class MyOrdersPageNew {
-    public WebDriver driver;
-    GeneralSeleniumMethods generalSeleniumMethods = new GeneralSeleniumMethods(driver);
+public class MyOrdersPageNew extends BasePageObject {
+    GeneralSeleniumMethods generalSeleniumMethods;
 
     public static final String ORDER_HISTORY = "ORDER HISTORY";
     public static final String ORDER_HISTORY_TEXT = "Here are the orders you've placed since your account was created.";
@@ -20,10 +18,12 @@ public class MyOrdersPageNew {
     public static final String ACCOUNT_URL = "http://automationpractice.com/index.php?controller=my-account";
     public static final String HOME_PAGE_URL = "http://automationpractice.com/index.php";
 
+    private WebDriver driver;
+
     //Constructor
     public MyOrdersPageNew(WebDriver driver) {
+        generalSeleniumMethods = new GeneralSeleniumMethods(driver);
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
     //orderHistoryNavigationOne

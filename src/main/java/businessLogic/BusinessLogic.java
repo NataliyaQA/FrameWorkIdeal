@@ -8,17 +8,16 @@ import pageObjects.objects.rewritten.MyAccountPageNew;
 public class BusinessLogic  {
     public WebDriver driver;
     HomePageNew homePageNew;
+    MyAccountPageNew myAccountPage;
     String stringUrl = "http://automationpractice.com/index.php?controller=authentication&back=my-account";
 
     public BusinessLogic(WebDriver driver) {
+        homePageNew = new HomePageNew(driver);
         this.driver = driver;
-        homePageNew = new HomePageNew();
-        //super(driver);
     }
 
     public void loginUser() {
         driver.get(stringUrl);
-        homePageNew = new HomePageNew();
 
         homePageNew.emailSendKey();
         homePageNew.passwordSendKey();
@@ -27,8 +26,7 @@ public class BusinessLogic  {
 
     public void signOutUser() {
         loginUser();
-
-        MyAccountPageNew myAccountPage = new MyAccountPageNew(driver);
+        myAccountPage = new MyAccountPageNew(driver);
         myAccountPage.signOutButtonClick();
     }
 

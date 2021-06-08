@@ -3,7 +3,6 @@ package pageObjects.objects.rewritten;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import pageObjects.objects.ProductObject;
 import wrapperMethods.GeneralSeleniumMethods;
 
@@ -13,18 +12,19 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-public class SortByNew {
-    public WebDriver driver;
-    GeneralSeleniumMethods generalSeleniumMethods = new GeneralSeleniumMethods(driver);
+public class SortByNew extends BasePageObject {
+    GeneralSeleniumMethods generalSeleniumMethods;
 
     //Constants
     public static final String ALERT_ADD_TO_WISHLIST= "You must be logged in to manage your wishlist.";
     public static final String ALERT_ADDED_TO_WISHLIST= "Added to your wishlist.";
 
+    private WebDriver driver;
+
     //Constructor
     public SortByNew(WebDriver driver) {
+        generalSeleniumMethods = new GeneralSeleniumMethods(driver);
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
     //Methods

@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import wrapperMethods.GeneralSeleniumMethods;
 
@@ -12,8 +11,8 @@ import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 
-public class SignInPageNew {
-    public WebDriver driver;
+public class SignInPageNew extends BasePageObject {
+    //public WebDriver driver;
     GeneralSeleniumMethods generalSeleniumMethods;
 
     public static final String EXPECTED_TITLE = "Login - My Store";
@@ -134,11 +133,19 @@ public class SignInPageNew {
 
     public static final List<String> COUNTRY_FIELD_LIST = Arrays.asList("-", "United States");
 
-    //constructor
+    private WebDriver driver;
+    //Constructor
     public SignInPageNew(WebDriver driver) {
+        generalSeleniumMethods = new GeneralSeleniumMethods(driver);
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+        //PageFactory.initElements(driver, this);
     }
+
+    //constructor
+//    public SignInPageNew(WebDriver driver) {
+//        this.driver = driver;
+//        PageFactory.initElements(driver, this);
+//    }
 
     //methods
     public String actualTitleFind() { //get title of Sign in page

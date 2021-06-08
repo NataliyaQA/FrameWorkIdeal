@@ -20,16 +20,16 @@ public class CarrouselBannerTest extends BaseTestAbstractClass {
     //re-wrote  + question (why we return to the initial page and make there verification, why don't do it on redirection page?)
     public void firstCarrouselBanner() {
         bannersPageNew.hoverFirstBannerButton(); //hover button on 1st banner
-        Log.log("The mouse found the button on the first carrousel", LogType.ERROR);
+        //Log.log("The mouse found the button on the first carrousel", LogType.ERROR);
 
         Assert.assertTrue(bannersPageNew.EXPECTED_BUTTON_NAME.toLowerCase().contains(bannersPageNew.getButtonNameOne().toLowerCase()),
                 "Name of button is correct");
-        Log.log("Name of the button is correct", LogType.INFO);
+        //Log.log("Name of the button is correct", LogType.INFO);
 
         bannersPageNew.clickOnFirstBannerButton();
 
         Assert.assertEquals(redirectionUrlsNew.getUrlExternalPage(), redirectionUrlsNew.EXTERNAL_PAGE_URL, "URL is correct");
-        Log.log("First link from carrousel is correct", LogType.WARNING);
+        //Log.log("First link from carrousel is correct", LogType.WARNING);
     }
 
     @Test //(enabled=false) //re-wrote

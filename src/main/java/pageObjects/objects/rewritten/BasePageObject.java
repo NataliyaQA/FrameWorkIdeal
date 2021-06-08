@@ -1,17 +1,13 @@
 package pageObjects.objects.rewritten;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import wrapperBrowsers.WrapperBrowsers;
-import wrapperMethods.GeneralSeleniumMethods;
-
-import static pageObjects.objects.rewritten.HomePageNew.EMAIL;
-import static pageObjects.objects.rewritten.HomePageNew.PASSWORD;
 
 public class BasePageObject {
+
+    //protected WebDriver driver;
 
     //Constructor
     public BasePageObject() {

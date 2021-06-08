@@ -42,7 +42,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("Expected Url is correct");
     }
 
-    @Test  //passed
+    @Test  // passed
     public void checkClickSignInAccountPage() throws InterruptedException {
         Thread.sleep(5000);
         signInPageNew.clickSignInHeaderButton();
@@ -56,36 +56,36 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertEquals(signInPageNew.signInHeaderButtonNameFind(), signInPageNew.EXPECTED_SIGN_IN_HEADER_BUTTON_NAME);
     }
 
-    @Test  //passed
+    @Test  //NullPointerException
     public void signInButtonNameAccountPage() {
         Assert.assertEquals(signInPageNew.signInHeaderButtonNameFind(), signInPageNew.EXPECTED_SIGN_IN_HEADER_BUTTON_NAME);
     }
 
-    @Test // works 123
+    @Test // NullPointerException
     public void signInPageTitle() throws InterruptedException {
-        SignInPageNew signInPageNew = new SignInPageNew(driver);
+        //SignInPageNew signInPageNew = new SignInPageNew();
         signInPageNew.clickSignInHeaderButton(); //works with and without
         Assert.assertEquals(signInPageNew.actualTitleFind(), signInPageNew.EXPECTED_TITLE);
         System.out.println("You are on Login - My Store");
     }
 
-    @Test //passed
+    @Test // NullPointerException
     public void authenticationSectionName() {
         Assert.assertEquals(signInPageNew.authenticationSectionTitleFind(),
                 signInPageNew.EXPECTED_AUTHENTICATION_SECTION_TITLE.toUpperCase());
     }
 
-    @Test //passed
+    @Test //
     public void createAnAccountSectionName() {
         Assert.assertEquals(signInPageNew.createAnAccountTitleFind(), signInPageNew.EXPECTED_CREATE_AN_ACCOUNT_TITLE_NAME);
     }
 
-    @Test //passed
+    @Test //
     public void createAnAccountSectionText() {
         Assert.assertEquals(signInPageNew.createAnAccountTextFind(), signInPageNew.EXPECTED_CREATE_AN_ACCOUNT_TEXT);
     }
 
-    @Test //passed
+    @Test //
     public void emailFieldCreateAnAccountName() {
         Assert.assertEquals(signInPageNew.emailAddressFieldCreateAnAccountTitle(),
                 signInPageNew.EXPECTED_EMAIL_ADDRESS_FIELD_CREATE_AN_ACCOUNT_NAME);
@@ -93,20 +93,20 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 + signInPageNew.EXPECTED_EMAIL_ADDRESS_FIELD_CREATE_AN_ACCOUNT_NAME + '"');
     }
 
-    @Test  //passed
+    @Test  //
     public void emailInputWithOneNew() {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Assert.assertEquals(signInPageNew.authenticationFind(), "Authentication");
     }
 
-    @Test  // passed
+    @Test  //
     public void emailInputNotEmpty() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertFalse(signInPageNew.emptyFieldEmail());
     }
 
-    @Test  // works
+    @Test  //
     public void emailInputSameEmail() throws InterruptedException {
         Thread.sleep(5000);
         String email = "qwe@gmail.com";
@@ -137,7 +137,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("The text of message is " + '"' + signInPageNew.INVALID_EMAIL + '"');
     }
 
-    @Test //passed
+    @Test //
     public void invalidEmailMessageWhenEmailEmpty() throws InterruptedException {
         signInPageNew.createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -146,7 +146,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("The text of message is " + '"' + signInPageNew.INVALID_EMAIL + '"');
     }
 
-    @Test  //passed
+    @Test  //
     // I want to add put from ContextMap. Main idea is: input a new generated email and then check it in the list of all emails
     public void emailInputWithPut() {
         signInPageNew.emailAddressFieldCreateAnAccountFind();
@@ -155,46 +155,46 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         signInPageNew.createAnAccountButtonClick();
     }
 
-    @Test  //passed
+    @Test  //
     public void createAnAccountButtonName() {
         Assert.assertEquals(signInPageNew.createAnAccountButtonFind(), signInPageNew.EXPECTED_CREATE_AN_ACCOUNT_BUTTON_NAME);
     }
 
-    @Test  //passed
+    @Test  //
     public void alreadyRegisteredSectionName() {
         Assert.assertEquals(signInPageNew.alreadyRegisteredTitleFind(), signInPageNew.EXPECTED_ALREADY_REGISTERED_TITLE);
     }
 
-    @Test //passed
+    @Test //
     public void emailFieldAlreadyRegisteredName() {
         Assert.assertEquals(signInPageNew.emailAddressFieldAlreadyRegisteredTitle(),
                 signInPageNew.EXPECTED_EMAIL_ADDRESS_FIELD_ALREADY_REGISTERED_NAME);
     }
 
-    @Test //passed
+    @Test //
     public void passwordFieldAlreadyRegisteredName() {
         Assert.assertEquals(signInPageNew.passwordFieldAlreadyRegisteredName(),
                 signInPageNew.EXPECTED_PASSWORD_FIELD_ALREADY_REGISTERED_NAME);
     }
 
-    @Test  //passed
+    @Test  //
     public void signInButtonAlreadyRegisteredName() {
         Assert.assertEquals(signInPageNew.signInAlreadyRegisteredButtonFind(),
                 signInPageNew.EXPECTED_SIGN_IN_ALREADY_REGISTERED_BUTTON_NAME);
     }
 
-    @Test  //passed
+    @Test  //
     public void signInButtonClick() throws InterruptedException {
         signInPageNew.clickSignInHeaderButton();
         Thread.sleep(5000);
     }
 
-    @Test //passed
+    @Test //
     public void forgotYourPasswordButtonName() {
         Assert.assertEquals(signInPageNew.forgotYourPasswordFind(), signInPageNew.EXPECTED_FORGOT_YOUR_PASSWORD_NAME);
     }
 
-    @Test  //passed
+    @Test  //
     public void invalidEmailMessageAlreadyRegistered() throws InterruptedException {
         signInPageNew.inputEmailInvalidAlreadyRegistered().signInAlreadyRegisteredButtonClick();
         Thread.sleep(5000);
@@ -211,7 +211,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 + signInPageNew.INVALID_EMAIL_MESSAGE_ALREADY_REGISTERED_SECOND_WHEN_IS + '"');
     }
 
-    @Test  //passed
+    @Test  //
     public void invalidEmptyEmailMessageAlreadyRegistered() throws InterruptedException {
         signInPageNew.signInAlreadyRegisteredButtonClick();
         Thread.sleep(5000);
@@ -228,7 +228,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 + signInPageNew.INVALID_EMAIL_MESSAGE_ALREADY_REGISTERED_SECOND_WHEN_EMPTY + '"');
     }
 
-    @Test  //passed
+    @Test  //
     public void invalidPasswordMessageAlreadyRegistered() throws InterruptedException {
         String email = "qwe@gmail.com";
         signInPageNew.inputEmailAlreadyRegistered(email);
@@ -249,7 +249,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 + signInPageNew.INVALID_PASSWORD_MESSAGE_ALREADY_REGISTERED_SECOND_WHEN_IS + '"');
     }
 
-    @Test  //passed
+    @Test  //
     public void missedPasswordMessageAlreadyRegistered() throws InterruptedException {
         String email = "qwe@gmail.com";
         signInPageNew.inputEmailAlreadyRegistered(email);
@@ -271,7 +271,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 + signInPageNew.INVALID_PASSWORD_MESSAGE_ALREADY_REGISTERED_SECOND_WHEN_EMPTY + '"');
     }
 
-    @Test  //passed
+    @Test  //
     public void mismatchedPasswordMessageAlreadyRegistered() throws InterruptedException {
         String email = "qwe@gmail.com";
         signInPageNew.inputEmailAlreadyRegistered(email);
@@ -292,7 +292,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 + signInPageNew.INVALID_PASSWORD_MESSAGE_ALREADY_REGISTERED_SECOND_WHEN_MISMATCHED + '"');
     }
 
-    @Test  //passed
+    @Test  //
     public void createAnAccountPersonalInfoTitle() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -300,28 +300,28 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 signInPageNew.CREATE_AN_ACCOUNT_PERSONAL_INFO_TITLE);
     }
 
-    @Test  //passed
+    @Test  //
     public void yourPersonalInfoSectionTitle() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.yourPersonalInfoSectionTitle(), signInPageNew.YOUR_PERSONAL_INFO_SECTION_TITLE);
     }
 
-    @Test  //passed
+    @Test  //
     public void yourPersonalInfoTitle() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.yourPersonalInfoTitle(), signInPageNew.YOUR_PERSONAL_INFO_TITLE);
     }
 
-    @Test  //passed
+    @Test  //
     public void mrRadioButtonDisplayed() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertTrue(signInPageNew.mrRadioButtonDisplayed());
     }
 
-    @Test //passed
+    @Test //
     public void mrRadioButtonEnabled() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         signInPageNew.mrRadioButtonEnabled();
@@ -329,21 +329,21 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertTrue(signInPageNew.mrRadioButtonEnabled());
     }
 
-    @Test  //passed
+    @Test  //
     public void mrsRadioButtonDisplayed() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertTrue(signInPageNew.mrsRadioButtonDisplayed());
     }
 
-    @Test  //passed
+    @Test  //
     public void mrsRadioButtonEnabled() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertTrue(signInPageNew.mrsRadioButtonEnabled());
     }
 
-    @Test  //passed
+    @Test  //
     public void selectedStatusMrRadioButton() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -351,7 +351,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertTrue(signInPageNew.selectedStatusMr());
     }
 
-    @Test //passed
+    @Test //
     public void selectedStatusMrsRadioButton() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -405,7 +405,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("*********" + index + " " + actual[index] + " " + expected[index]);
     }
 
-    @Test //passed
+    @Test //
     public void selectDropDownDaysOption() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -420,7 +420,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         }
     }
 
-    @Test  //passed
+    @Test  //
     public void selectDropDownDaysOptionOneByOne() throws InterruptedException {
         int amountOfDays = 31;
         signInPageNew.inputEmail().createAnAccountButtonClick();
@@ -434,14 +434,14 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         }
     }
 
-    @Test  //passed. Question: how to check all options value one by one?
+    @Test  // Question: how to check all options value one by one?
     public void selectDropDownDaysOptionByValue() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         signInPageNew.selectDropDownDaysOptionByValue();
     }
 
-    @Test  // passed *** was corrupted when actual and expected were written separately as variables with List<String>
+    @Test  //  *** was corrupted when actual and expected were written separately as variables with List<String>
     public void selectDropDownMonthsAllOptionsByIndex() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -452,7 +452,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 + " " + signInPageNew.DROPDOWN_MONTHS.get(index));
     }
 
-    @Test  // passed *** corrupted when actual and expected were written separately as variables with List<String>
+    @Test  //  *** corrupted when actual and expected were written separately as variables with List<String>
     public void selectDropDownMonthsAllOption() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -475,7 +475,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("*********" + index + " " + actual[index] + " " + expected[index]);
     }
 
-    @Test  //passed
+    @Test  //
     public void selectDropDownYearsOption() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -490,7 +490,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         }
     }
 
-    @Test //passed
+    @Test //
     public void checkEmailFieldIfNotEmpty() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -498,7 +498,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println(signInPageNew.emptyFieldEmail());
     }
 
-    @Test //passed
+    @Test //
     public void checkEmailFieldValue() throws InterruptedException {
         signInPageNew.inputEmail();
         Thread.sleep(5000);
@@ -510,7 +510,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println(signInPageNew.valueOfEmailField());
     }
 
-    @Test  //passed
+    @Test  //
     public void deleteEmailValue() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -518,14 +518,14 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertEquals(signInPageNew.emptyFieldEmail(), true);
     }
 
-    @Test  //passed
+    @Test  //
     public void countryDropDownFirstOption() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.countryDropDownFirstOption(), "-");
     }
 
-    @Test  //passed
+    @Test  //
     public void errorAlertIs() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -537,7 +537,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertTrue(signInPageNew.errorAlertDisplayed());
     }
 
-    @Test  //passed
+    @Test  //
     public void errorAlertText() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -560,7 +560,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertTrue(signInPageNew.signUpCheckBox());
     }
 
-    @Test  // passed
+    @Test  //
     public void signUpCheckBoxClickAndSelected() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -592,7 +592,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 signInPageNew.OFFERS_CHECKBOX, "offersCheckBoxName is not correct");
     }
 
-    @Test //passed
+    @Test //
     public void offersCheckBoxClickAndSelected() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -602,7 +602,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertTrue(signInPageNew.selectedOffersCheckBox());
     }
 
-    @Test //passed
+    @Test //
     public void firsNameOneFieldName() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -616,14 +616,14 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertEquals(signInPageNew.lastNameFieldTOneName(), signInPageNew.LASTNAME_FIELD);
     }
 
-    @Test //passed
+    @Test //
     public void firsNameTwoFieldName() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.firstNameFieldTwoName(), signInPageNew.FIRSTNAME_FIELD);
     }
 
-    @Test //passed
+    @Test //
     public void lastNameOneFieldName() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -637,7 +637,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertEquals(signInPageNew.emailFieldName(), signInPageNew.EMAIL_FIELD);
     }
 
-    @Test //passed but time to time is failed with different results of field name
+    @Test // time to time is failed with different results of field name
     public void passwordFieldName() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -658,7 +658,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertEquals(signInPageNew.dateOfBirthFieldName(), signInPageNew.DATE_OF_BIRTH_FIELD);
     }
 
-    @Test //passed
+    @Test //
     public void yourAddressSectionName() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -700,7 +700,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertEquals(signInPageNew.countryFieldName(), signInPageNew.COUNTRY_FIELD);
     }
 
-    @Test  // passed
+    @Test  //
     public void selectDropDownStatesAllOptionsByIndex() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -711,7 +711,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 + " " + signInPageNew.STATES.get(index));
     }
 
-    @Test  // passed
+    @Test  //
     public void selectDropDownStatesAllOption() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -756,7 +756,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertEquals(signInPageNew.assignAliasFieldName(), signInPageNew.ASSIGN_ADDRESS_ALIAS_FIELD);
     }
 
-    @Test //passed
+    @Test //
     public void valueOfAddressAliasField() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -770,7 +770,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertEquals(signInPageNew.registerButtonName(), signInPageNew.REGISTER_BUTTON);
     }
 
-    @Test //passed
+    @Test //
     public void requiredText() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -808,7 +808,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
      * @throws InterruptedException
      * @throws AWTException
      */
-    @Test //passed
+    @Test //
     public void firstNameFieldWithLetters() throws InterruptedException, AWTException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -824,7 +824,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
      * @throws InterruptedException
      * @throws AWTException
      */
-    @Test //passed
+    @Test //
     public void lastNameFieldWithDigits() throws InterruptedException, AWTException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -840,7 +840,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
      * @throws InterruptedException
      * @throws AWTException
      */
-    @Test //passed
+    @Test //
     public void lastNameFieldWithLetters() throws InterruptedException, AWTException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -856,7 +856,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
      * @throws InterruptedException
      * @throws AWTException
      */
-    @Test //passed
+    @Test //
     public void emailFieldWithAlphaNumeric() throws InterruptedException, AWTException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -869,7 +869,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertTrue(signInPageNew.redSignDisplayed());
     }
 
-    @Test //passed
+    @Test //
     public void emailFieldWithLetters() throws InterruptedException, AWTException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -882,7 +882,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertTrue(signInPageNew.redSignDisplayed());
     }
 
-    @Test //passed
+    @Test //
     public void emailFieldWithCorrectEmail() throws InterruptedException, AWTException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -919,7 +919,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 + "\n" + "second field" + "\n" + (signInPageNew.valueOfLastNameOneField())));
     }
 
-    @Test //passed
+    @Test //
     public void companyFieldAllowed() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -941,7 +941,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("result" + "\n" + (signInPageNew.actualUrlFind()));
     }
 
-    @Test //passed
+    @Test //
     public void customerAccountDisplayed() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -968,7 +968,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
 
     }
 
-    @Test //passed
+    @Test //
     public void companyFieldNotAllowed() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -1012,7 +1012,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
 //        System.out.println("Company field" + "\n" + (signInPage.errorInputIsInvalid()));
     }
 
-    @Test //passed
+    @Test //
     public void addressFieldNotAllowed() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -1035,7 +1035,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("Address field" + "\n" + (signInPageNew.errorInputIsInvalid()));
     }
 
-    @Test //passed
+    @Test //
     public void cityFieldNotAllowed() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -1058,7 +1058,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("City field" + "\n" + (signInPageNew.errorInputIsInvalid()));
     }
 
-    @Test //passed
+    @Test //
     public void statesFieldNotAllowed() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -1081,7 +1081,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("City field" + "\n" + (signInPageNew.errorInputRequires()));
     }
 
-    @Test //passed
+    @Test //
     public void phoneFieldNotAllowed() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -1104,7 +1104,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("Phone field" + "\n" + (signInPageNew.errorInputIsInvalid()));
     }
 
-    @Test //passed
+    @Test //
     public void phoneFieldsEmpty() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -1125,7 +1125,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("Phone field" + "\n" + (signInPageNew.errorInputEmptyFieldError()));
     }
 
-    @Test //passed
+    @Test //
     public void phoneFieldsEmptyText() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);

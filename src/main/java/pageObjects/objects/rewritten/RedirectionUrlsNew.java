@@ -1,13 +1,10 @@
 package pageObjects.objects.rewritten;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 import wrapperMethods.GeneralSeleniumMethods;
 
-public class RedirectionUrlsNew {
-
-    public WebDriver driver;
-    GeneralSeleniumMethods generalSeleniumMethods = new GeneralSeleniumMethods(driver);
+public class RedirectionUrlsNew extends BasePageObject {
+    GeneralSeleniumMethods generalSeleniumMethods;
 
     public final String WOMEN_PAGE_URL = "http://automationpractice.com/index.php?id_category=3&controller=category";
     public final String TSHIRTS_PAGE_URL = "http://automationpractice.com/index.php?id_category=5&controller=category";
@@ -19,9 +16,12 @@ public class RedirectionUrlsNew {
     public final String EXTERNAL_PAGE_URL = "https://www.prestashop.com/en";
     public final String LOGO_PAGE_URL = "http://automationpractice.com/index.php";
 
+    private WebDriver driver;
+
+    //Constructor
     public RedirectionUrlsNew(WebDriver driver) {
+        generalSeleniumMethods = new GeneralSeleniumMethods(driver);
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
     public String getUrlDressesPage() {

@@ -4,23 +4,23 @@ import logs.Log;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import wrapperMethods.GeneralSeleniumMethods;
 
-public class BannersPageNew {
-    public WebDriver driver;
+public class BannersPageNew extends BasePageObject {
     GeneralSeleniumMethods generalSeleniumMethods; //Question: is it correct or better make methods in MainMethods static?
 
     public final String EXPECTED_BUTTON_NAME = "SHOP NOW !";
     public final String EXPECTED_URL = "https://www.prestashop.com/en?utm_source=v16_homeslider";
 
+    private WebDriver driver;
     /**
      * method for search all elements by xPath, getText, getCurrentUrl and for definitions of variables
      * @param driver search for elements
      */
+    //Constructor
     public BannersPageNew(WebDriver driver) {
+        generalSeleniumMethods = new GeneralSeleniumMethods(driver);
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
     //firstBanner

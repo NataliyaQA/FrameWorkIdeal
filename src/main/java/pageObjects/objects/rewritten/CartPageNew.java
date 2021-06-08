@@ -4,11 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import utils.ThreadSleep;
 import wrapperMethods.GeneralSeleniumMethods;
 
-public class CartPageNew {
+public class CartPageNew extends BasePageObject {
     GeneralSeleniumMethods generalSeleniumMethods;
 
     //Constants
@@ -32,8 +31,8 @@ public class CartPageNew {
     public CartPageNew(WebDriver driver) {
         generalSeleniumMethods = new GeneralSeleniumMethods(driver);
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
+
     //Methods
     public void waiterWrapperLocatedBy(WebElement webElement) {
         ThreadSleep.waitForElementLocatedBy(driver, (By) webElement);
@@ -131,16 +130,6 @@ public class CartPageNew {
     public void hoverFadedShortSleeve() {
         generalSeleniumMethods.hoverElementTwo(fadedShortSleeve);
     }
-
-//    //General hover
-//    public void hoverElement(String xPath) {
-//        Actions actions = new Actions(driver);
-//        actions.moveToElement(driver.findElement(By.xpath(xPath))).perform();
-//    }
-//
-//    public void hoverFadedShortSleeve() {
-//        hoverElement("//a[contains(text(),'Faded Short Sleeve T-shirts')]");
-//    }
 
     public void hoverPrintedDress() {
         generalSeleniumMethods.hoverElementTwo(printedDress);

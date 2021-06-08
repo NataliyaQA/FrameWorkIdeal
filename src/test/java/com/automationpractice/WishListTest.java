@@ -1,5 +1,6 @@
 package com.automationpractice;
 
+import businessLogic.BusinessLogic;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -12,15 +13,11 @@ public class WishListTest extends BaseTestAbstractClass{
     SortByNew sortByNew = new SortByNew(driver);
     MyAccountPageNew myAccountPage = new MyAccountPageNew(driver);
     WishListPageNew wishListPageNew = new WishListPageNew(driver);
+    BusinessLogic businessLogic = new BusinessLogic(driver);
 
     @BeforeMethod
-    void setUpMethod() throws InterruptedException {
-        driver.get(stringUrlWomenPage);
-
-        myAccountPage.signInButtonHeaderClick();
-        myAccountPage.emailSendKey();
-        myAccountPage.passwordSendKey();
-        myAccountPage.signInButtonClick();
+    void setUpMethod(){
+        businessLogic.loginUser();
     }
 
     @AfterMethod
