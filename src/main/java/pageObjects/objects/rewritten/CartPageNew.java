@@ -1,6 +1,5 @@
 package pageObjects.objects.rewritten;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -35,7 +34,7 @@ public class CartPageNew extends BasePageObject {
 
     //Methods
     public void waiterWrapperLocatedBy(WebElement webElement) {
-        ThreadSleep.waitForElementLocatedBy(driver, (By) webElement);
+        ThreadSleep.waitForElementLocatedBy(driver, webElement);
     }
 
     public void waiterWrapperForElement(WebElement webElement) {
@@ -182,7 +181,7 @@ public class CartPageNew extends BasePageObject {
     }
 
     // productOne
-    @FindBy(xpath = "//ul[@id='homefeatured']//a[@class='product-name'and contains(@title,'Faded')]")
+    @FindBy(xpath = "//*[@id='homefeatured']/li[1]/div/div[2]/h5/a")
     private WebElement productOne;
 
     public void clickProductOne() {
@@ -262,7 +261,7 @@ public class CartPageNew extends BasePageObject {
     private WebElement alertTextThereAreInTheCartAddedToCartModal;
 
     public String alertTextThereAreInTheCart() {
-        waiterWrapperLocatedBy(alertTextThereAreInTheCartAddedToCartModal);
+        //waiterWrapperLocatedBy(alertTextThereAreInTheCartAddedToCartModal);
         return generalSeleniumMethods.getText(alertTextThereAreInTheCartAddedToCartModal);
     }
 
@@ -280,7 +279,7 @@ public class CartPageNew extends BasePageObject {
     private WebElement totalAddedProductModal;
 
     public float textToDigitsTotalAddedProductModal() {
-        waiterWrapperForElement(totalAddedProductModal);
+        //waiterWrapperForElement(totalAddedProductModal);
         return generalSeleniumMethods.textToDigits(totalAddedProductModal);
     }
 
@@ -289,6 +288,6 @@ public class CartPageNew extends BasePageObject {
     private WebElement totalProductsAddedAddedToCartModal;
 
     public float textToDigitsTotalProductsAddedAddedToCartModal() {
-        return generalSeleniumMethods.textToDigits(totalProductsAddedAddedToCartModal);
+        return (int) generalSeleniumMethods.textToDigits(totalProductsAddedAddedToCartModal);
     }
 }

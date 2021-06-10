@@ -10,9 +10,9 @@ public class ThreadSleep {
 
     public static final int WAIT_TIMEOUT_SECONDS = 20;
 
-    public static WebElement waitForElementLocatedBy(WebDriver driver, By by) {
+    public static WebElement waitForElementLocatedBy(WebDriver driver, WebElement webElement) {
         return new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.presenceOfElementLocated(by));
+                .until(ExpectedConditions.presenceOfElementLocated((By) webElement));
     }
 
     public static WebElement waitForElement(WebDriver driver, WebElement webElement) {
