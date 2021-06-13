@@ -1,9 +1,15 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<suite name="Suite1" verbose="1" >
-    <test name="Regression1"   >
+<suite name="Suite1" verbose="1">
+    <test name="Regression1">
         <packages>
-            <package name="com.automationpractice.CreateAnAccountTest" />
+            <package name="com.automationpractice.CreateAnAccountTest"/>
+        </packages>
+    </test>
+
+    <test name="Regression2">
+        <packages>
+            <package name="com.automationpractice.CartAddProductTestTest"/>
         </packages>
     </test>
 </suite>

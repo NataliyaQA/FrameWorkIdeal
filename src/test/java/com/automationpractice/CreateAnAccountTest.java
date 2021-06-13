@@ -713,7 +713,7 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertTrue(signInPageNew.signUpCheckBox());
     }
 
-    @Test (priority = 0, description = "signUpCheckBoxClickAndSelected")
+    @Test (priority = 0, description = "signUpCheckBoxClickAndSelected") //failed
     @Severity(SeverityLevel.MINOR)
     @Description("signUpCheckBoxClickAndSelected")
     @Story("Create an account")
@@ -1276,12 +1276,12 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Thread.sleep(5000);
         signInPageNew.clickRegisterButton();
         List<String> fullSetOfErrors = signInPageNew.getListOfOptions();
-        //fullSetOfErrors.forEach(System.out::println);
+        fullSetOfErrors.forEach(System.out::println);
 
-        List<String> filteredList = new ArrayList<>();
-        for (String errors : filteredList) {
+        fullSetOfErrors = new ArrayList<>();
+        for (String errors : fullSetOfErrors) {
             if (errors.contains("firstname")) ;
-            System.out.println(filteredList);
+            System.out.println(fullSetOfErrors + "firstname");
         }
     }
 

@@ -285,8 +285,8 @@ public class GeneralSeleniumMethods extends BasePageObject {
      * @param webElement
      * @return
      */
-    public List<String> getListOfOptions(WebElement webElement) {
-        List<WebElement> elementName = (List<WebElement>) webElement;
+    public List<String> getListOfOptions(List<WebElement> webElement) {
+        List<WebElement> elementName = webElement;
         List<String> strings = new ArrayList<>();
         for (WebElement eachElement : elementName) {
             strings.add(eachElement.getText());

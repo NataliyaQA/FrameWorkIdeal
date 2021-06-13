@@ -310,7 +310,7 @@ public class SignInPageNew extends BasePageObject {
     }
 
     //authenticationNavigation
-    @FindBy(xpath = "//span[text()='Authentication']")
+    @FindBy(xpath = "//span[@class='navigation_page']")
     private WebElement authenticationNavigation;
 
     @Step("Find 'Authentication'")
@@ -850,12 +850,11 @@ public class SignInPageNew extends BasePageObject {
 
     //pop-up setOfErrors 1-10
     @FindBy(xpath = "//*[@id='center_column']/div/ol")
-    private WebElement setOfErrors;
+    private List<WebElement> setOfErrors;
 
     @Step("Observe list of errors")
     public List<String> getListOfOptions() {
-        generalSeleniumMethods.getListOfOptions(setOfErrors);
-        return (List<String>) this;
+        return generalSeleniumMethods.getListOfOptions(setOfErrors);
     }
 
     @Step("Delete value of 'Email' field")
@@ -897,14 +896,14 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='id_state']")
     private WebElement statesDropDown;
 
-    @Step("Observe 'States' dropdown options\"")
+    @Step("Observe 'States' dropdown options")
     public String statesDropDownOptionByValue() {
         Actions action = new Actions(driver);
         action.moveToElement(statesDropDown).build().perform();
         statesDropDown.click();
 
         Select select = new Select(statesDropDown);
-        select.selectByValue("FL");
+        select.selectByValue("9");
         return select.getFirstSelectedOption().getText();
     }
 
