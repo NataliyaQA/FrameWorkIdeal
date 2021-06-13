@@ -1,6 +1,10 @@
 package com.automationpractice;
 
 import businessLogic.BusinessLogic;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -34,7 +38,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
 //        signInPage.signOutButtonClick();
 //    }
 
-    @Test  //passed
+    @Test (priority = 0, description = "Check URL after click on the 'Sign In' button of 'Main' page") //passed
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Click on the 'Sign In' button of 'Main' page")
+    @Story("Create an account")
     public void checkClickSignInMainPage() {
         driver.get(stringUrlMainPage);
         signInPageNew.clickSignInHeaderButton();
@@ -42,7 +49,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("Expected Url is correct");
     }
 
-    @Test  // passed
+    @Test (priority = 0, description = "Check URL after click on the 'Sign In' button of 'Account' page") //passed
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Click on the 'Sign In' button of 'Account' page")
+    @Story("Create an account")
     public void checkClickSignInAccountPage() throws InterruptedException {
         Thread.sleep(5000);
         signInPageNew.clickSignInHeaderButton();
@@ -50,18 +60,27 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("Expected Url is correct");
     }
 
-    @Test //passed
+    @Test (priority = 0, description = "Check name of the 'Sign In' button of 'Main' page") //passed
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Name of the 'Sign In' button of 'Main' page")
+    @Story("Create an account")
     public void signInButtonNameMainPage() {
         driver.get(stringUrlMainPage);
         Assert.assertEquals(signInPageNew.signInHeaderButtonNameFind(), signInPageNew.EXPECTED_SIGN_IN_HEADER_BUTTON_NAME);
     }
 
-    @Test  //NullPointerException
+    @Test (priority = 0, description = "Check name of the 'Sign In' button of 'Account' page") //passed
+    @Severity(SeverityLevel.MINOR)
+    @Description("Name of the 'Sign In' button of 'Account' page")
+    @Story("Create an account")
     public void signInButtonNameAccountPage() {
         Assert.assertEquals(signInPageNew.signInHeaderButtonNameFind(), signInPageNew.EXPECTED_SIGN_IN_HEADER_BUTTON_NAME);
     }
 
-    @Test // NullPointerException
+    @Test (priority = 0, description = "'Sign In' page title") //passed
+    @Severity(SeverityLevel.NORMAL)
+    @Description("'Sign In' page title")
+    @Story("Create an account")
     public void signInPageTitle() throws InterruptedException {
         //SignInPageNew signInPageNew = new SignInPageNew();
         signInPageNew.clickSignInHeaderButton(); //works with and without
@@ -69,23 +88,35 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("You are on Login - My Store");
     }
 
-    @Test // NullPointerException
+    @Test (priority = 0, description = "'Authentication' section name") //passed
+    @Severity(SeverityLevel.MINOR)
+    @Description("'Authentication' section name")
+    @Story("Create an account")
     public void authenticationSectionName() {
         Assert.assertEquals(signInPageNew.authenticationSectionTitleFind(),
                 signInPageNew.EXPECTED_AUTHENTICATION_SECTION_TITLE.toUpperCase());
     }
 
-    @Test //
+    @Test (priority = 0, description = "'Create An Account Section' section name")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("'Create An Account Section' section name")
+    @Story("Create an account")
     public void createAnAccountSectionName() {
         Assert.assertEquals(signInPageNew.createAnAccountTitleFind(), signInPageNew.EXPECTED_CREATE_AN_ACCOUNT_TITLE_NAME);
     }
 
-    @Test //
+    @Test (priority = 0, description = "'Create An Account Section' section text")
+    @Severity(SeverityLevel.MINOR)
+    @Description("'Create An Account Section' section text")
+    @Story("Create an account")
     public void createAnAccountSectionText() {
         Assert.assertEquals(signInPageNew.createAnAccountTextFind(), signInPageNew.EXPECTED_CREATE_AN_ACCOUNT_TEXT);
     }
 
-    @Test //
+    @Test (priority = 0, description = "'Email' field of 'Create An Account' name")
+    @Severity(SeverityLevel.MINOR)
+    @Description("")
+    @Story("'Email' field of 'Create An Account' name")
     public void emailFieldCreateAnAccountName() {
         Assert.assertEquals(signInPageNew.emailAddressFieldCreateAnAccountTitle(),
                 signInPageNew.EXPECTED_EMAIL_ADDRESS_FIELD_CREATE_AN_ACCOUNT_NAME);
@@ -93,33 +124,35 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 + signInPageNew.EXPECTED_EMAIL_ADDRESS_FIELD_CREATE_AN_ACCOUNT_NAME + '"');
     }
 
-    @Test  //
+    @Test (priority = 0, description = "Click on the 'Create An Account'")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Click on the 'Create An Account'")
+    @Story("Create an account")
     public void emailInputWithOneNew() {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Assert.assertEquals(signInPageNew.authenticationFind(), "Authentication");
     }
 
-    @Test  //
+    @Test (priority = 0, description = "'Email' field should not be empty")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("'Email' field should not be empty")
+    @Story("Create an account")
     public void emailInputNotEmpty() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertFalse(signInPageNew.emptyFieldEmail());
     }
 
-    @Test  //
+    @Test (priority = 0, description = "'Email' field filled in with the same value")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("'Email' field filled in with the same value")
+    @Story("Create an account")
     public void emailInputSameEmail() throws InterruptedException {
         Thread.sleep(5000);
         String email = "qwe@gmail.com";
 
         signInPageNew.inputEmailCreateAnAccount(email).createAnAccountButtonClick();
         Thread.sleep(5000);
-
-//        driver.get(stringUrl);
-//        SignInPage signInPageTwo = new SignInPage(driver);
-//        signInPageTwo.inputEmail(email);
-//        Thread.sleep(5000);
-//        signInPage.createAnAccountButtonClick();
-//        Thread.sleep(5000);
 
         // 2d part
         Thread.sleep(5000);
@@ -128,7 +161,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 "Please enter a valid password or request a new one.");
     }
 
-    @Test // Url put and creation of instance of "SignInPage" class moved to current class
+    @Test (priority = 0, description = "'Email' field filled in with the invalid value") // Url put and creation of instance of "SignInPage" class moved to current class
+    @Severity(SeverityLevel.MINOR)
+    @Description("'Email' field filled in with the invalid value")
+    @Story("Create an account")
     public void invalidEmailMessage() throws InterruptedException {
         signInPageNew.inputEmailInvalidCreateAnAccount().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -137,7 +173,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("The text of message is " + '"' + signInPageNew.INVALID_EMAIL + '"');
     }
 
-    @Test //
+    @Test (priority = 0, description = "'Email' field message")
+    @Severity(SeverityLevel.MINOR)
+    @Description("'Email' field message")
+    @Story("Create an account")
     public void invalidEmailMessageWhenEmailEmpty() throws InterruptedException {
         signInPageNew.createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -146,7 +185,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("The text of message is " + '"' + signInPageNew.INVALID_EMAIL + '"');
     }
 
-    @Test  //
+    @Test (priority = 0, description = "Fill in 'Email' field and check")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Fill in 'Email' field")
+    @Story("Create an account")
     // I want to add put from ContextMap. Main idea is: input a new generated email and then check it in the list of all emails
     public void emailInputWithPut() {
         signInPageNew.emailAddressFieldCreateAnAccountFind();
@@ -155,46 +197,70 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         signInPageNew.createAnAccountButtonClick();
     }
 
-    @Test  //
+    @Test (priority = 0, description = "'Create An Account' button name")
+    @Severity(SeverityLevel.MINOR)
+    @Description("'Create An Account' button name")
+    @Story("Create an account")
     public void createAnAccountButtonName() {
         Assert.assertEquals(signInPageNew.createAnAccountButtonFind(), signInPageNew.EXPECTED_CREATE_AN_ACCOUNT_BUTTON_NAME);
     }
 
-    @Test  //
+    @Test (priority = 0, description = "'Already Registered' section name")
+    @Severity(SeverityLevel.MINOR)
+    @Description("'Already Registered' section name")
+    @Story("Create an account")
     public void alreadyRegisteredSectionName() {
         Assert.assertEquals(signInPageNew.alreadyRegisteredTitleFind(), signInPageNew.EXPECTED_ALREADY_REGISTERED_TITLE);
     }
 
-    @Test //
+    @Test (priority = 0, description = "emailFieldAlreadyRegisteredName")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("emailFieldAlreadyRegisteredName")
+    @Story("Create an account")
     public void emailFieldAlreadyRegisteredName() {
         Assert.assertEquals(signInPageNew.emailAddressFieldAlreadyRegisteredTitle(),
                 signInPageNew.EXPECTED_EMAIL_ADDRESS_FIELD_ALREADY_REGISTERED_NAME);
     }
 
-    @Test //
+    @Test (priority = 0, description = "passwordFieldAlreadyRegisteredName")
+    @Severity(SeverityLevel.MINOR)
+    @Description("passwordFieldAlreadyRegisteredName")
+    @Story("Create an account")
     public void passwordFieldAlreadyRegisteredName() {
         Assert.assertEquals(signInPageNew.passwordFieldAlreadyRegisteredName(),
                 signInPageNew.EXPECTED_PASSWORD_FIELD_ALREADY_REGISTERED_NAME);
     }
 
-    @Test  //
+    @Test (priority = 0, description = "signInButtonAlreadyRegisteredName")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("signInButtonAlreadyRegisteredName")
+    @Story("Create an account")
     public void signInButtonAlreadyRegisteredName() {
         Assert.assertEquals(signInPageNew.signInAlreadyRegisteredButtonFind(),
                 signInPageNew.EXPECTED_SIGN_IN_ALREADY_REGISTERED_BUTTON_NAME);
     }
 
-    @Test  //
+    @Test (priority = 0, description = "signInButtonClick")
+    @Severity(SeverityLevel.MINOR)
+    @Description("signInButtonClick")
+    @Story("Create an account")
     public void signInButtonClick() throws InterruptedException {
         signInPageNew.clickSignInHeaderButton();
         Thread.sleep(5000);
     }
 
-    @Test //
+    @Test (priority = 0, description = "forgotYourPasswordButtonName")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("forgotYourPasswordButtonName")
+    @Story("Create an account")
     public void forgotYourPasswordButtonName() {
         Assert.assertEquals(signInPageNew.forgotYourPasswordFind(), signInPageNew.EXPECTED_FORGOT_YOUR_PASSWORD_NAME);
     }
 
-    @Test  //
+    @Test (priority = 0, description = "invalidEmailMessageAlreadyRegistered")
+    @Severity(SeverityLevel.MINOR)
+    @Description("invalidEmailMessageAlreadyRegistered")
+    @Story("Create an account")
     public void invalidEmailMessageAlreadyRegistered() throws InterruptedException {
         signInPageNew.inputEmailInvalidAlreadyRegistered().signInAlreadyRegisteredButtonClick();
         Thread.sleep(5000);
@@ -211,7 +277,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 + signInPageNew.INVALID_EMAIL_MESSAGE_ALREADY_REGISTERED_SECOND_WHEN_IS + '"');
     }
 
-    @Test  //
+    @Test (priority = 0, description = "invalidEmptyEmailMessageAlreadyRegistered")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("invalidEmptyEmailMessageAlreadyRegistered")
+    @Story("Create an account")
     public void invalidEmptyEmailMessageAlreadyRegistered() throws InterruptedException {
         signInPageNew.signInAlreadyRegisteredButtonClick();
         Thread.sleep(5000);
@@ -228,7 +297,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 + signInPageNew.INVALID_EMAIL_MESSAGE_ALREADY_REGISTERED_SECOND_WHEN_EMPTY + '"');
     }
 
-    @Test  //
+    @Test (priority = 0, description = "invalidPasswordMessageAlreadyRegistered")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("invalidPasswordMessageAlreadyRegistered")
+    @Story("Create an account")
     public void invalidPasswordMessageAlreadyRegistered() throws InterruptedException {
         String email = "qwe@gmail.com";
         signInPageNew.inputEmailAlreadyRegistered(email);
@@ -249,7 +321,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 + signInPageNew.INVALID_PASSWORD_MESSAGE_ALREADY_REGISTERED_SECOND_WHEN_IS + '"');
     }
 
-    @Test  //
+    @Test (priority = 0, description = "missedPasswordMessageAlreadyRegistered")
+    @Severity(SeverityLevel.MINOR)
+    @Description("missedPasswordMessageAlreadyRegistered")
+    @Story("Create an account")
     public void missedPasswordMessageAlreadyRegistered() throws InterruptedException {
         String email = "qwe@gmail.com";
         signInPageNew.inputEmailAlreadyRegistered(email);
@@ -271,7 +346,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 + signInPageNew.INVALID_PASSWORD_MESSAGE_ALREADY_REGISTERED_SECOND_WHEN_EMPTY + '"');
     }
 
-    @Test  //
+    @Test (priority = 0, description = "mismatchedPasswordMessageAlreadyRegistered")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("mismatchedPasswordMessageAlreadyRegistered")
+    @Story("Create an account")
     public void mismatchedPasswordMessageAlreadyRegistered() throws InterruptedException {
         String email = "qwe@gmail.com";
         signInPageNew.inputEmailAlreadyRegistered(email);
@@ -292,7 +370,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 + signInPageNew.INVALID_PASSWORD_MESSAGE_ALREADY_REGISTERED_SECOND_WHEN_MISMATCHED + '"');
     }
 
-    @Test  //
+    @Test (priority = 0, description = "createAnAccountPersonalInfoTitle")
+    @Severity(SeverityLevel.MINOR)
+    @Description("createAnAccountPersonalInfoTitle")
+    @Story("Create an account")
     public void createAnAccountPersonalInfoTitle() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -300,28 +381,40 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 signInPageNew.CREATE_AN_ACCOUNT_PERSONAL_INFO_TITLE);
     }
 
-    @Test  //
+    @Test (priority = 0, description = "yourPersonalInfoSectionTitle")
+    @Severity(SeverityLevel.MINOR)
+    @Description("yourPersonalInfoSectionTitle")
+    @Story("Create an account")
     public void yourPersonalInfoSectionTitle() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.yourPersonalInfoSectionTitle(), signInPageNew.YOUR_PERSONAL_INFO_SECTION_TITLE);
     }
 
-    @Test  //
+    @Test (priority = 0, description = "yourPersonalInfoTitle")
+    @Severity(SeverityLevel.MINOR)
+    @Description("yourPersonalInfoTitle")
+    @Story("Create an account")
     public void yourPersonalInfoTitle() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.yourPersonalInfoTitle(), signInPageNew.YOUR_PERSONAL_INFO_TITLE);
     }
 
-    @Test  //
+    @Test (priority = 0, description = "mrRadioButtonDisplayed")
+    @Severity(SeverityLevel.MINOR)
+    @Description("mrRadioButtonDisplayed")
+    @Story("Create an account")
     public void mrRadioButtonDisplayed() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertTrue(signInPageNew.mrRadioButtonDisplayed());
     }
 
-    @Test //
+    @Test (priority = 0, description = "mrRadioButtonEnabled")
+    @Severity(SeverityLevel.MINOR)
+    @Description("mrRadioButtonEnabled")
+    @Story("Create an account")
     public void mrRadioButtonEnabled() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         signInPageNew.mrRadioButtonEnabled();
@@ -329,21 +422,30 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertTrue(signInPageNew.mrRadioButtonEnabled());
     }
 
-    @Test  //
+    @Test (priority = 0, description = "")
+    @Severity(SeverityLevel.MINOR)
+    @Description("")
+    @Story("Create an account")
     public void mrsRadioButtonDisplayed() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertTrue(signInPageNew.mrsRadioButtonDisplayed());
     }
 
-    @Test  //
+    @Test (priority = 0, description = "mrsRadioButtonEnabled")
+    @Severity(SeverityLevel.MINOR)
+    @Description("mrsRadioButtonEnabled")
+    @Story("Create an account")
     public void mrsRadioButtonEnabled() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertTrue(signInPageNew.mrsRadioButtonEnabled());
     }
 
-    @Test  //
+    @Test (priority = 0, description = "selectedStatusMrRadioButton")
+    @Severity(SeverityLevel.MINOR)
+    @Description("selectedStatusMrRadioButton")
+    @Story("Create an account")
     public void selectedStatusMrRadioButton() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -351,7 +453,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertTrue(signInPageNew.selectedStatusMr());
     }
 
-    @Test //
+    @Test (priority = 0, description = "selectedStatusMrsRadioButton")
+    @Severity(SeverityLevel.MINOR)
+    @Description("selectedStatusMrsRadioButton")
+    @Story("Create an account")
     public void selectedStatusMrsRadioButton() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -360,7 +465,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertTrue(signInPageNew.selectedStatusMrs());
     }
 
-    @Test  //passed *** corrupted, java.util. had to be added
+    @Test (priority = 0, description = "selectDropDown") //passed *** corrupted, java.util. had to be added
+    @Severity(SeverityLevel.MINOR)
+    @Description("selectDropDown")
+    @Story("Create an account")
     public void selectDropDown() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -392,7 +500,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("Select value is: " + select.getFirstSelectedOption().getText());
     }
 
-    @Test
+    @Test (priority = 0, description = "selectDropDownDaysAll")
+    @Severity(SeverityLevel.MINOR)
+    @Description("selectDropDownDaysAll")
+    @Story("Create an account")
     public void selectDropDownDaysAll() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -405,7 +516,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("*********" + index + " " + actual[index] + " " + expected[index]);
     }
 
-    @Test //
+    @Test (priority = 0, description = "selectDropDownDaysOption")
+    @Severity(SeverityLevel.MINOR)
+    @Description("selectDropDownDaysOption")
+    @Story("Create an account")
     public void selectDropDownDaysOption() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -420,7 +534,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         }
     }
 
-    @Test  //
+    @Test (priority = 0, description = "selectDropDownDaysOptionOneByOne")
+    @Severity(SeverityLevel.MINOR)
+    @Description("selectDropDownDaysOptionOneByOne")
+    @Story("Create an account")
     public void selectDropDownDaysOptionOneByOne() throws InterruptedException {
         int amountOfDays = 31;
         signInPageNew.inputEmail().createAnAccountButtonClick();
@@ -434,14 +551,20 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         }
     }
 
-    @Test  // Question: how to check all options value one by one?
+    @Test (priority = 0, description = "selectDropDownDaysOptionByValue") // Question: how to check all options value one by one?
+    @Severity(SeverityLevel.MINOR)
+    @Description("selectDropDownDaysOptionByValue")
+    @Story("Create an account")
     public void selectDropDownDaysOptionByValue() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         signInPageNew.selectDropDownDaysOptionByValue();
     }
 
-    @Test  //  *** was corrupted when actual and expected were written separately as variables with List<String>
+    @Test (priority = 0, description = "selectDropDownMonthsAllOptionsByIndex") //  *** was corrupted when actual and expected were written separately as variables with List<String>
+    @Severity(SeverityLevel.MINOR)
+    @Description("selectDropDownMonthsAllOptionsByIndex")
+    @Story("Create an account")
     public void selectDropDownMonthsAllOptionsByIndex() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -452,7 +575,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 + " " + signInPageNew.DROPDOWN_MONTHS.get(index));
     }
 
-    @Test  //  *** corrupted when actual and expected were written separately as variables with List<String>
+    @Test (priority = 0, description = "selectDropDownMonthsAllOption") //  *** corrupted when actual and expected were written separately as variables with List<String>
+    @Severity(SeverityLevel.MINOR)
+    @Description("selectDropDownMonthsAllOption")
+    @Story("Create an account")
     public void selectDropDownMonthsAllOption() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -462,7 +588,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 + " \n " + signInPageNew.DROPDOWN_MONTHS);
     }
 
-    @Test
+    @Test (priority = 0, description = "selectDropDownYearsAll")
+    @Severity(SeverityLevel.MINOR)
+    @Description("selectDropDownYearsAll")
+    @Story("Create an account")
     public void selectDropDownYearsAll() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -475,7 +604,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("*********" + index + " " + actual[index] + " " + expected[index]);
     }
 
-    @Test  //
+    @Test (priority = 0, description = "selectDropDownYearsOption")
+    @Severity(SeverityLevel.MINOR)
+    @Description("selectDropDownYearsOption")
+    @Story("Create an account")
     public void selectDropDownYearsOption() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -490,7 +622,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         }
     }
 
-    @Test //
+    @Test (priority = 0, description = "checkEmailFieldIfNotEmpty")
+    @Severity(SeverityLevel.MINOR)
+    @Description("checkEmailFieldIfNotEmpty")
+    @Story("Create an account")
     public void checkEmailFieldIfNotEmpty() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -498,7 +633,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println(signInPageNew.emptyFieldEmail());
     }
 
-    @Test //
+    @Test (priority = 0, description = "checkEmailFieldValue")
+    @Severity(SeverityLevel.MINOR)
+    @Description("checkEmailFieldValue")
+    @Story("Create an account")
     public void checkEmailFieldValue() throws InterruptedException {
         signInPageNew.inputEmail();
         Thread.sleep(5000);
@@ -510,7 +648,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println(signInPageNew.valueOfEmailField());
     }
 
-    @Test  //
+    @Test (priority = 0, description = "deleteEmailValue")
+    @Severity(SeverityLevel.MINOR)
+    @Description("deleteEmailValue")
+    @Story("Create an account")
     public void deleteEmailValue() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -518,14 +659,20 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertEquals(signInPageNew.emptyFieldEmail(), true);
     }
 
-    @Test  //
+    @Test (priority = 0, description = "countryDropDownFirstOption")
+    @Severity(SeverityLevel.MINOR)
+    @Description("countryDropDownFirstOption")
+    @Story("Create an account")
     public void countryDropDownFirstOption() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.countryDropDownFirstOption(), "-");
     }
 
-    @Test  //
+    @Test (priority = 0, description = "errorAlertIs")
+    @Severity(SeverityLevel.MINOR)
+    @Description("errorAlertIs")
+    @Story("Create an account")
     public void errorAlertIs() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -537,7 +684,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertTrue(signInPageNew.errorAlertDisplayed());
     }
 
-    @Test  //
+    @Test (priority = 0, description = "errorAlertText")
+    @Severity(SeverityLevel.MINOR)
+    @Description("errorAlertText")
+    @Story("Create an account")
     public void errorAlertText() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -553,14 +703,20 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertEquals(actual, signInPageNew.ALERT_ERROR);
     }
 
-    @Test
+    @Test (priority = 0, description = "signUpCheckBoxEnabled")
+    @Severity(SeverityLevel.MINOR)
+    @Description("signUpCheckBoxEnabled")
+    @Story("Create an account")
     public void signUpCheckBoxEnabled() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertTrue(signInPageNew.signUpCheckBox());
     }
 
-    @Test  //
+    @Test (priority = 0, description = "signUpCheckBoxClickAndSelected")
+    @Severity(SeverityLevel.MINOR)
+    @Description("signUpCheckBoxClickAndSelected")
+    @Story("Create an account")
     public void signUpCheckBoxClickAndSelected() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -570,20 +726,29 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertTrue(signInPageNew.selectedSignUpCheckBox(), "not correct");
     }
 
-    @Test //(enabled=false)
+    @Test (priority = 0, description = "signUpCheckBoxName")
+    @Severity(SeverityLevel.MINOR)
+    @Description("signUpCheckBoxName")
+    @Story("Create an account")
     public void signUpCheckBoxName() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.signUpCheckBoxName(), signInPageNew.SIGNUP_CHECKBOX, "signUpCheckBoxName is not correct");
     }
 
-    @Test
+    @Test (priority = 0, description = "offersCheckBoxEnabled")
+    @Severity(SeverityLevel.MINOR)
+    @Description("offersCheckBoxEnabled")
+    @Story("Create an account")
     public void offersCheckBoxEnabled() {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Assert.assertTrue(signInPageNew.offersCheckBox());
     }
 
-    @Test
+    @Test (priority = 0, description = "offersCheckBoxName")
+    @Severity(SeverityLevel.MINOR)
+    @Description("offersCheckBoxName")
+    @Story("Create an account")
     public void offersCheckBoxName() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -592,7 +757,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 signInPageNew.OFFERS_CHECKBOX, "offersCheckBoxName is not correct");
     }
 
-    @Test //
+    @Test (priority = 0, description = "offersCheckBoxClickAndSelected")
+    @Severity(SeverityLevel.MINOR)
+    @Description("offersCheckBoxClickAndSelected")
+    @Story("Create an account")
     public void offersCheckBoxClickAndSelected() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -602,105 +770,150 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertTrue(signInPageNew.selectedOffersCheckBox());
     }
 
-    @Test //
+    @Test (priority = 0, description = "firsNameOneFieldName")
+    @Severity(SeverityLevel.MINOR)
+    @Description("firsNameOneFieldName")
+    @Story("Create an account")
     public void firsNameOneFieldName() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.firstNameFieldOneName(), signInPageNew.FIRSTNAME_FIELD);
     }
 
-    @Test
+    @Test (priority = 0, description = "lastNameTwoFieldName")
+    @Severity(SeverityLevel.MINOR)
+    @Description("lastNameTwoFieldName")
+    @Story("Create an account")
     public void lastNameTwoFieldName() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.lastNameFieldTOneName(), signInPageNew.LASTNAME_FIELD);
     }
 
-    @Test //
+    @Test (priority = 0, description = "firsNameTwoFieldName")
+    @Severity(SeverityLevel.MINOR)
+    @Description("firsNameTwoFieldName")
+    @Story("Create an account")
     public void firsNameTwoFieldName() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.firstNameFieldTwoName(), signInPageNew.FIRSTNAME_FIELD);
     }
 
-    @Test //
+    @Test (priority = 0, description = "lastNameOneFieldName")
+    @Severity(SeverityLevel.MINOR)
+    @Description("lastNameOneFieldName")
+    @Story("Create an account")
     public void lastNameOneFieldName() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.lastNameFieldTwoName(), signInPageNew.LASTNAME_FIELD);
     }
 
-    @Test
+    @Test (priority = 0, description = "emailFieldName")
+    @Severity(SeverityLevel.MINOR)
+    @Description("emailFieldName")
+    @Story("Create an account")
     public void emailFieldName() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.emailFieldName(), signInPageNew.EMAIL_FIELD);
     }
 
-    @Test // time to time is failed with different results of field name
+    @Test (priority = 0, description = "passwordFieldName") // time to time is failed with different results of field name
+    @Severity(SeverityLevel.MINOR)
+    @Description("passwordFieldName")
+    @Story("Create an account")
     public void passwordFieldName() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.passwordFieldName(), signInPageNew.PASSWORD_FIELD);
     }
 
-    @Test
+    @Test (priority = 0, description = "passwordFieldHelpText")
+    @Severity(SeverityLevel.MINOR)
+    @Description("passwordFieldHelpText")
+    @Story("Create an account")
     public void passwordFieldHelpText() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.passwordFieldHelpText(), signInPageNew.PASSWORD_FIELD_HELP_TEXT);
     }
 
-    @Test
+    @Test (priority = 0, description = "dateOfBirthFieldName")
+    @Severity(SeverityLevel.MINOR)
+    @Description("dateOfBirthFieldName")
+    @Story("Create an account")
     public void dateOfBirthFieldName() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.dateOfBirthFieldName(), signInPageNew.DATE_OF_BIRTH_FIELD);
     }
 
-    @Test //
+    @Test (priority = 0, description = "yourAddressSectionName")
+    @Severity(SeverityLevel.MINOR)
+    @Description("yourAddressSectionName")
+    @Story("Create an account")
     public void yourAddressSectionName() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.yourAddressSectionName(), signInPageNew.YOUR_ADDRESS_SECTION.toUpperCase());
     }
 
-    @Test
+    @Test (priority = 0, description = "companyFieldName")
+    @Severity(SeverityLevel.MINOR)
+    @Description("companyFieldName")
+    @Story("Create an account")
     public void companyFieldName() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.companyFieldName(), signInPageNew.COMPANY_FIELD);
     }
 
-    @Test
+    @Test (priority = 0, description = "addressFieldName")
+    @Severity(SeverityLevel.MINOR)
+    @Description("addressFieldName")
+    @Story("Create an account")
     public void addressFieldName() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.addressFieldName(), signInPageNew.ADDRESS_FIELD);
     }
 
-    @Test
+    @Test (priority = 0, description = "addressFieldHelpText")
+    @Severity(SeverityLevel.MINOR)
+    @Description("addressFieldHelpText")
+    @Story("Create an account")
     public void addressFieldHelpText() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.addressFieldHelpText(), signInPageNew.ADDRESS_HELP_TEXT);
     }
 
-    @Test
+    @Test (priority = 0, description = "cityFieldName")
+    @Severity(SeverityLevel.MINOR)
+    @Description("cityFieldName")
+    @Story("Create an account")
     public void cityFieldName() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.cityFieldName(), signInPageNew.CITY_FIELD);
     }
 
-    @Test
+    @Test (priority = 0, description = "countryFieldName")
+    @Severity(SeverityLevel.MINOR)
+    @Description("countryFieldName")
+    @Story("Create an account")
     public void countryFieldName() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.countryFieldName(), signInPageNew.COUNTRY_FIELD);
     }
 
-    @Test  //
+    @Test (priority = 0, description = "selectDropDownStatesAllOptionsByIndex")
+    @Severity(SeverityLevel.MINOR)
+    @Description("selectDropDownStatesAllOptionsByIndex")
+    @Story("Create an account")
     public void selectDropDownStatesAllOptionsByIndex() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -711,7 +924,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 + " " + signInPageNew.STATES.get(index));
     }
 
-    @Test  //
+    @Test (priority = 0, description = "selectDropDownStatesAllOption")
+    @Severity(SeverityLevel.MINOR)
+    @Description("selectDropDownStatesAllOption")
+    @Story("Create an account")
     public void selectDropDownStatesAllOption() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -721,56 +937,80 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 + " \n " + signInPageNew.STATES);
     }
 
-    @Test
+    @Test (priority = 0, description = "additionalInfoFieldName")
+    @Severity(SeverityLevel.MINOR)
+    @Description("additionalInfoFieldName")
+    @Story("Create an account")
     public void additionalInfoFieldName() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.additionalInfoFieldName(), signInPageNew.ADDITIONAL_INFORMATION_FIELD);
     }
 
-    @Test
+    @Test (priority = 0, description = "additionalInfoHelpText")
+    @Severity(SeverityLevel.MINOR)
+    @Description("additionalInfoHelpText")
+    @Story("Create an account")
     public void additionalInfoHelpText() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.additionalInfoHelpText(), signInPageNew.ADDITIONAL_INFORMATION_HELP_TEXT);
     }
 
-    @Test
+    @Test (priority = 0, description = "homePhoneFieldName")
+    @Severity(SeverityLevel.MINOR)
+    @Description("homePhoneFieldName")
+    @Story("Create an account")
     public void homePhoneFieldName() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.homePhoneFieldName(), signInPageNew.HOME_PHONE_FIELD);
     }
 
-    @Test
+    @Test (priority = 0, description = "mobilePhoneFieldName")
+    @Severity(SeverityLevel.MINOR)
+    @Description("mobilePhoneFieldName")
+    @Story("Create an account")
     public void mobilePhoneFieldName() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.mobilePhoneFieldName(), signInPageNew.MOBILE_PHONE_FIELD);
     }
 
-    @Test
+    @Test (priority = 0, description = "assignAliasFieldName")
+    @Severity(SeverityLevel.MINOR)
+    @Description("assignAliasFieldName")
+    @Story("Create an account")
     public void assignAliasFieldName() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.assignAliasFieldName(), signInPageNew.ASSIGN_ADDRESS_ALIAS_FIELD);
     }
 
-    @Test //
+    @Test (priority = 0, description = "valueOfAddressAliasField")
+    @Severity(SeverityLevel.MINOR)
+    @Description("valueOfAddressAliasField")
+    @Story("Create an account")
     public void valueOfAddressAliasField() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.assignAliasFieldValue(), signInPageNew.ASSIGN_ADDRESS_ALIAS_VALUE);
     }
 
-    @Test
+    @Test (priority = 0, description = "registerButtonName")
+    @Severity(SeverityLevel.MINOR)
+    @Description("registerButtonName")
+    @Story("Create an account")
     public void registerButtonName() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
         Assert.assertEquals(signInPageNew.registerButtonName(), signInPageNew.REGISTER_BUTTON);
     }
 
-    @Test //
+    @Test (priority = 0, description = "requiredText")
+    @Severity(SeverityLevel.MINOR)
+    @Description("requiredText")
+    @Story("Create an account")
     public void requiredText() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -783,8 +1023,11 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
      * @throws InterruptedException
      * @throws AWTException
      */
-    @Test //probably bad design. Question about loop. I'd like to empty all fields one by one and then work only
+    @Test (priority = 0, description = "firstNameFieldWithDigits") //probably bad design. Question about loop. I'd like to empty all fields one by one and then work only
     // with one field. Should I write if for each field separately
+    @Severity(SeverityLevel.MINOR)
+    @Description("firstNameFieldWithDigits")
+    @Story("Create an account")
     public void firstNameFieldWithDigits() throws InterruptedException, AWTException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -808,7 +1051,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
      * @throws InterruptedException
      * @throws AWTException
      */
-    @Test //
+    @Test (priority = 0, description = "firstNameFieldWithLetters")
+    @Severity(SeverityLevel.MINOR)
+    @Description("firstNameFieldWithLetters")
+    @Story("Create an account")
     public void firstNameFieldWithLetters() throws InterruptedException, AWTException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -824,7 +1070,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
      * @throws InterruptedException
      * @throws AWTException
      */
-    @Test //
+    @Test (priority = 0, description = "lastNameFieldWithDigits")
+    @Severity(SeverityLevel.MINOR)
+    @Description("lastNameFieldWithDigits")
+    @Story("Create an account")
     public void lastNameFieldWithDigits() throws InterruptedException, AWTException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -840,7 +1089,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
      * @throws InterruptedException
      * @throws AWTException
      */
-    @Test //
+    @Test (priority = 0, description = "lastNameFieldWithLetters")
+    @Severity(SeverityLevel.MINOR)
+    @Description("lastNameFieldWithLetters")
+    @Story("Create an account")
     public void lastNameFieldWithLetters() throws InterruptedException, AWTException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -856,7 +1108,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
      * @throws InterruptedException
      * @throws AWTException
      */
-    @Test //
+    @Test (priority = 0, description = "emailFieldWithAlphaNumeric")
+    @Severity(SeverityLevel.MINOR)
+    @Description("emailFieldWithAlphaNumeric")
+    @Story("Create an account")
     public void emailFieldWithAlphaNumeric() throws InterruptedException, AWTException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -869,7 +1124,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertTrue(signInPageNew.redSignDisplayed());
     }
 
-    @Test //
+    @Test (priority = 0, description = "emailFieldWithLetters")
+    @Severity(SeverityLevel.MINOR)
+    @Description("emailFieldWithLetters")
+    @Story("Create an account")
     public void emailFieldWithLetters() throws InterruptedException, AWTException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -882,7 +1140,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertTrue(signInPageNew.redSignDisplayed());
     }
 
-    @Test //
+    @Test (priority = 0, description = "emailFieldWithCorrectEmail")
+    @Severity(SeverityLevel.MINOR)
+    @Description("emailFieldWithCorrectEmail")
+    @Story("Create an account")
     public void emailFieldWithCorrectEmail() throws InterruptedException, AWTException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -895,7 +1156,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         Assert.assertTrue(signInPageNew.greenSignDisplayed());
     }
 
-    @Test
+    @Test (priority = 0, description = "firstNameFieldsAreEqual")
+    @Severity(SeverityLevel.MINOR)
+    @Description("firstNameFieldsAreEqual")
+    @Story("Create an account")
     public void firstNameFieldsAreEqual() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -907,7 +1171,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 + "\n" + "second field" + "\n" + (signInPageNew.valueOfFirstNameOneField())));
     }
 
-    @Test
+    @Test (priority = 0, description = "lastNameFieldsAreEqual")
+    @Severity(SeverityLevel.MINOR)
+    @Description("lastNameFieldsAreEqual")
+    @Story("Create an account")
     public void lastNameFieldsAreEqual() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -919,7 +1186,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
                 + "\n" + "second field" + "\n" + (signInPageNew.valueOfLastNameOneField())));
     }
 
-    @Test //
+    @Test (priority = 0, description = "companyFieldAllowed")
+    @Severity(SeverityLevel.MINOR)
+    @Description("companyFieldAllowed")
+    @Story("Create an account")
     public void companyFieldAllowed() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -941,7 +1211,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("result" + "\n" + (signInPageNew.actualUrlFind()));
     }
 
-    @Test //
+    @Test (priority = 0, description = "customerAccountDisplayed")
+    @Severity(SeverityLevel.MINOR)
+    @Description("customerAccountDisplayed")
+    @Story("Create an account")
     public void customerAccountDisplayed() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -968,7 +1241,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
 
     }
 
-    @Test //
+    @Test (priority = 0, description = "companyFieldNotAllowed")
+    @Severity(SeverityLevel.MINOR)
+    @Description("companyFieldNotAllowed")
+    @Story("Create an account")
     public void companyFieldNotAllowed() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -991,7 +1267,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("Company field" + "\n" + (signInPageNew.errorInputIsInvalid()));
     }
 
-    @Test // Question with stream AQA#28
+    @Test (priority = 0, description = "firstNameFieldNotAllowedError")
+    @Severity(SeverityLevel.MINOR)
+    @Description("firstNameFieldNotAllowedError")
+    @Story("Create an account")
     public void firstNameFieldNotAllowedError() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -1004,15 +1283,12 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
             if (errors.contains("firstname")) ;
             System.out.println(filteredList);
         }
-
-
-//        Assert.assertTrue(signInPage.errorInput());
-//        Assert.assertEquals(signInPage.errorInputIsInvalid(),
-//                "company is invalid.");
-//        System.out.println("Company field" + "\n" + (signInPage.errorInputIsInvalid()));
     }
 
-    @Test //
+    @Test (priority = 0, description = "addressFieldNotAllowed")
+    @Severity(SeverityLevel.MINOR)
+    @Description("addressFieldNotAllowed")
+    @Story("Create an account")
     public void addressFieldNotAllowed() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -1035,7 +1311,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("Address field" + "\n" + (signInPageNew.errorInputIsInvalid()));
     }
 
-    @Test //
+    @Test (priority = 0, description = "cityFieldNotAllowed")
+    @Severity(SeverityLevel.MINOR)
+    @Description("cityFieldNotAllowed")
+    @Story("Create an account")
     public void cityFieldNotAllowed() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -1058,7 +1337,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("City field" + "\n" + (signInPageNew.errorInputIsInvalid()));
     }
 
-    @Test //
+    @Test (priority = 0, description = "statesFieldNotAllowed")
+    @Severity(SeverityLevel.MINOR)
+    @Description("statesFieldNotAllowed")
+    @Story("Create an account")
     public void statesFieldNotAllowed() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -1081,7 +1363,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("City field" + "\n" + (signInPageNew.errorInputRequires()));
     }
 
-    @Test //
+    @Test (priority = 0, description = "phoneFieldNotAllowed")
+    @Severity(SeverityLevel.MINOR)
+    @Description("phoneFieldNotAllowed")
+    @Story("Create an account")
     public void phoneFieldNotAllowed() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -1104,7 +1389,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("Phone field" + "\n" + (signInPageNew.errorInputIsInvalid()));
     }
 
-    @Test //
+    @Test (priority = 0, description = "phoneFieldsEmpty")
+    @Severity(SeverityLevel.MINOR)
+    @Description("phoneFieldsEmpty")
+    @Story("Create an account")
     public void phoneFieldsEmpty() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);
@@ -1125,7 +1413,10 @@ public class CreateAnAccountTest extends BaseTestAbstractClass {
         System.out.println("Phone field" + "\n" + (signInPageNew.errorInputEmptyFieldError()));
     }
 
-    @Test //
+    @Test (priority = 0, description = "phoneFieldsEmptyText")
+    @Severity(SeverityLevel.MINOR)
+    @Description("phoneFieldsEmptyText")
+    @Story("Create an account")
     public void phoneFieldsEmptyText() throws InterruptedException {
         signInPageNew.inputEmail().createAnAccountButtonClick();
         Thread.sleep(5000);

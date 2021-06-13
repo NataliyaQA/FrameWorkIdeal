@@ -1,9 +1,9 @@
-package logs;
+package logsOld;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Log {
+public class LogOld {
     static {
         System.setProperty("logback.configurationFile", "resources/logback.xml");
     }
@@ -25,11 +25,11 @@ public class Log {
 
         }
 
-        public static void log(String message) {
+        public static void logOld(String message) {
             getLogger().info(message);
         }
 
-        public static void log(String message, LogType type) {
+        public static void logOld(String message, LogType type) {
             switch (type) {
                 case INFO:
                     getLogger().info(message);

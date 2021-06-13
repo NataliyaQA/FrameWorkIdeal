@@ -1,6 +1,6 @@
 package pageObjects.objects.rewritten;
 
-import logs.Log;
+import logsOld.LogOld;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -77,7 +77,7 @@ public class BannersPageNew extends BasePageObject {
      * @return instance of page
      */
     public BannersPageNew hoverFirstBannerButton() {
-        Log.log("1st banner is hovered");
+        LogOld.logOld("1st banner is hovered");
         generalSeleniumMethods.hoverOverElement(firstBannerButton);
         return this;
     }

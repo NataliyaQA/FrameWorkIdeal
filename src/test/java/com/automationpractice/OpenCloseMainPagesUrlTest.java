@@ -1,8 +1,8 @@
 package com.automationpractice;
 
 import businessLogic.BusinessLogic;
-import logs.Log;
-import logs.LogType;
+import logsOld.LogOld;
+import logsOld.LogType;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.objects.rewritten.BannersPageNew;
@@ -25,8 +25,8 @@ public class OpenCloseMainPagesUrlTest extends BaseTestAbstractClass {
     @Test(priority = 5) // re-written
     public void homePage() {
         Assert.assertEquals(searchHomePageElementsNew.getActualTitle(), searchHomePageElementsNew.HOME_PAGE_TITLE);
-        Log.log("Test result: 'My Store' title is found and correct", LogType.INFO);
-        Log.log("Priority 5", LogType.INFO);
+        LogOld.logOld("Test result: 'My Store' title is found and correct", LogType.INFO);
+        LogOld.logOld("Priority 5", LogType.INFO);
     }
 
     /**

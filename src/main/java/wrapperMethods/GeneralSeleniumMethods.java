@@ -1,6 +1,6 @@
 package wrapperMethods;
 
-import logs.Log;
+import logsOld.LogOld;
 import org.apache.commons.lang.RandomStringUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
@@ -33,7 +33,7 @@ public class GeneralSeleniumMethods extends BasePageObject {
      * @return instance of page (this)
      */
     public GeneralSeleniumMethods hoverOverElement(WebElement hoverElement) {
-        Log.log("Element is hovered");
+        LogOld.logOld("Element is hovered");
         Actions actions = new Actions(driver);
 
         actions.moveToElement(hoverElement).perform();

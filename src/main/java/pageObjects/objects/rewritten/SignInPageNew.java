@@ -1,5 +1,6 @@
 package pageObjects.objects.rewritten;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -148,10 +149,12 @@ public class SignInPageNew extends BasePageObject {
 //    }
 
     //methods
+    @Step("Find actual title")
     public String actualTitleFind() { //get title of Sign in page
         return generalSeleniumMethods.getTitle();
     }
 
+    @Step("Find actual URL")
     public String actualUrlFind() {  //get URL for further comparison
         return generalSeleniumMethods.getUrl();
     }
@@ -160,6 +163,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//a[@title='Log in to your customer account']")
     private WebElement signInHeaderButton;
 
+    @Step("find 'Sign In' Header Button Name")
     public String signInHeaderButtonNameFind() {
         return generalSeleniumMethods.getText(signInHeaderButton);
     }
@@ -168,6 +172,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//h1[text()='Authentication']")
     private WebElement authenticationSectionTitle;
 
+    @Step("Observe 'Authentication' Section Title")
     public String authenticationSectionTitleFind() {
         return generalSeleniumMethods.getText(authenticationSectionTitle);
     }
@@ -176,6 +181,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//h3[text()='Create an account']")
     private WebElement createAnAccountTitle;
 
+    @Step("Observe 'Create An Account' Section Title")
     public String createAnAccountTitleFind() {
         return generalSeleniumMethods.getText(createAnAccountTitle);
     }
@@ -185,6 +191,7 @@ public class SignInPageNew extends BasePageObject {
             "/p[contains(text(),'Please')]")
     private WebElement createAnAccountText;
 
+    @Step("Observe 'Create An Account' Section text")
     public String createAnAccountTextFind() {
         return generalSeleniumMethods.getText(createAnAccountText);
     }
@@ -193,6 +200,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='SubmitCreate']/span")
     private WebElement createAnAccountButton;
 
+    @Step("Observe 'Create An Account' button")
     public String createAnAccountButtonFind() {
         return generalSeleniumMethods.getText(createAnAccountButton);
     }
@@ -201,6 +209,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='email_create']")
     private WebElement emailAddressFieldCreateAnAccount;
 
+    @Step("Observe 'Email Address' Field of 'Create An Account'")
     public String emailAddressFieldCreateAnAccountFind() {
         return generalSeleniumMethods.getText(emailAddressFieldCreateAnAccount);
     }
@@ -209,6 +218,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='create-account_form']//child::div[2]/label")
     private WebElement emailAddressFieldCreateAnAccountTitle;
 
+    @Step("Observe name of 'Email Address' Field of 'Create An Account'")
     public String emailAddressFieldCreateAnAccountTitle() {
         return generalSeleniumMethods.getText(emailAddressFieldCreateAnAccountTitle);
     }
@@ -217,6 +227,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//div[@id='create_account_error']/ol/li")
     private WebElement errorMessageIsExist;
 
+    @Step("Find error message 'Is exist'")
     public String errorMessageIsExist() {
         return generalSeleniumMethods.getText(errorMessageIsExist);
     }
@@ -225,6 +236,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//li[text()='Invalid email address.']")
     private WebElement invalidEmail;
 
+    @Step("Check email")
     public String invalidEmail() {
         return generalSeleniumMethods.getText(invalidEmail);
     }
@@ -233,6 +245,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//h3[text()='Already registered?']")
     private WebElement alreadyRegisteredTitle;
 
+    @Step("Find 'Already Registered' Title")
     public String alreadyRegisteredTitleFind() {
         return generalSeleniumMethods.getText(alreadyRegisteredTitle);
     }
@@ -241,6 +254,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='email']")
     private WebElement emailField;
 
+    @Step("Find 'Email' field of 'Already Registered'")
     public String emailAddressFieldAlreadyRegisteredFind() {
         return generalSeleniumMethods.getText(emailField);
     }
@@ -249,6 +263,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='login_form']//child::div[1]/label")
     private WebElement emailAddressFieldAlreadyRegisteredTitle;
 
+    @Step("Check title of 'Email' field of 'Already Registered'")
     public String emailAddressFieldAlreadyRegisteredTitle() {
         return generalSeleniumMethods.getText(emailAddressFieldAlreadyRegisteredTitle);
     }
@@ -257,6 +272,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='passwd']")
     private WebElement passwordFieldAlreadyRegistered;
 
+    @Step("Find 'Password' field of 'Already Registered")
     public String passwordFieldAlreadyRegisteredFind() {
         return generalSeleniumMethods.getText(passwordFieldAlreadyRegistered);
     }
@@ -265,6 +281,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='login_form']/div/div[2]/label")
     private WebElement passwordFieldAlreadyRegisteredTitle;
 
+    @Step("Check title of 'Password' field of 'Already Registered'")
     public String passwordFieldAlreadyRegisteredName() {
         return generalSeleniumMethods.getText(passwordFieldAlreadyRegisteredTitle);
     }
@@ -273,10 +290,12 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='SubmitLogin']/span")
     private WebElement signInButtonAlreadyRegistered;
 
+    @Step("Find 'Sign In'' button of 'Already Registered'")
     public String signInAlreadyRegisteredButtonFind() {
         return generalSeleniumMethods.getText(signInButtonAlreadyRegistered);
     }
 
+    @Step("Click on 'Sign In'' button of 'Already Registered'")
     public void signInAlreadyRegisteredButtonClick() {
         generalSeleniumMethods.clickElement(signInButtonAlreadyRegistered);
     }
@@ -285,6 +304,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//p[contains(@class,'lost')]/a")
     private WebElement forgotYourPassword;
 
+    @Step("Find 'Forgot Your Password'")
     public String forgotYourPasswordFind() {
         return generalSeleniumMethods.getText(forgotYourPassword);
     }
@@ -293,14 +313,17 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//span[text()='Authentication']")
     private WebElement authenticationNavigation;
 
+    @Step("Find 'Authentication'")
     public String authenticationFind() {
         return generalSeleniumMethods.getText(authenticationNavigation);
     }
 
+    @Step("Click on 'Sign In' button of the header")
     public void clickSignInHeaderButton() {
         generalSeleniumMethods.clickElement(signInHeaderButton);
     }
 
+    @Step("Click on 'Create an account' button")
     public void createAnAccountButtonClick() {
         generalSeleniumMethods.clickElement(createAnAccountButton);
     }
@@ -309,6 +332,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='company']")
     private WebElement companyField;
 
+    @Step("Fill in 'Company' field with allowed value")
     public void inputValueAllowedCompany() {
         generalSeleniumMethods.sendKey(companyField, companyAllowed);
     }
@@ -317,6 +341,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='address1']")
     private WebElement addressOneField;
 
+    @Step("Fill in 'Address' field with allowed value")
     public void inputValueAllowedAddress() {
         generalSeleniumMethods.sendKey(addressOneField, addressAllowed);
     }
@@ -325,6 +350,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='city']")
     private WebElement cityField;
 
+    @Step("Fill in 'City' field with allowed value")
     public void inputValueAllowedCity() {
         generalSeleniumMethods.sendKey(cityField, cityAllowed);
     }
@@ -333,6 +359,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='postcode']")
     private WebElement zipField;
 
+    @Step("Fill in 'Zip' field with allowed value")
     public void inputValueAllowedZip() {
         generalSeleniumMethods.sendKey(zipField, zipAllowed);
     }
@@ -341,6 +368,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='phone']")
     private WebElement phoneField;
 
+    @Step("Fill in 'Phone' field with allowed value")
     public void inputValueAllowedPhone() {
         generalSeleniumMethods.sendKey(phoneField, phoneAllowed);
     }
@@ -349,78 +377,95 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='phone_mobile']")
     private WebElement mobileField;
 
+    @Step("Fill in 'Mobile' field with allowed value")
     public void inputValueAllowedMobile() {
         generalSeleniumMethods.sendKey(mobileField, phoneAllowed);
     }
 
+    @Step("Fill in 'Company' field with not allowed value")
     public void inputValueNotAllowedCompany() {
         generalSeleniumMethods.sendKey(companyField, companyNotAllowed);
     }
 
+    @Step("Fill in 'Address' field with not allowed value")
     public void inputValueNotAllowedAddress() {
         generalSeleniumMethods.sendKey(addressOneField, addressNotAllowed);
     }
 
+    @Step("Fill in 'City' field with not allowed value")
     public void inputValueNotAllowedCity() {
         generalSeleniumMethods.sendKey(cityField, cityNotAllowed);
     }
 
+    @Step("Fill in 'Zip' field with not allowed value")
     public void inputValueNotAllowedZip() {
         generalSeleniumMethods.sendKey(zipField, zipNotAllowed);
     }
 
+    @Step("Fill in 'Phone' field with not allowed value")
     public void inputValueNotAllowedPhone() {
         generalSeleniumMethods.sendKey(phoneField, phoneNotAllowed);
     }
 
+    @Step("Fill in 'Mobile' field with not allowed value")
     public void inputValueNotAllowedMobile() {
         generalSeleniumMethods.sendKey(mobileField, phoneNotAllowed);
     }
 
+    @Step("Fill in 'Email' field with alphanumeric value")
     public void inputValueAlphaNumericEmail() {
         generalSeleniumMethods.inputValueAlphaNumeric(emailField);
     }
 
+    @Step("Fill in 'Email' field with valid value")
     public SignInPageNew inputEmail() {
         generalSeleniumMethods.inputValueRandomEmail(emailAddressFieldCreateAnAccount);
         return this;
     }
 
+    @Step("Fill in 'Email' field with random email value")
     public SignInPageNew inputEmailAuthorization() {
         generalSeleniumMethods.inputValueRandomEmail(emailField);
         return this;
     }
 
+    @Step("Fill in 'Email' field with correct email")
     public SignInPageNew inputEmailCreateAnAccount(String email) {
         generalSeleniumMethods.inputEmail(emailAddressFieldCreateAnAccount, email);
         return this;
     }
 
+    @Step("Fill in 'Email' field with invalid email")
     public SignInPageNew inputEmailInvalidCreateAnAccount() {
         generalSeleniumMethods.inputEmailInvalid(emailAddressFieldCreateAnAccount, emailInvalid);
         return this;
     }
 
+    @Step("Fill in 'Email' field with invalid email")
     public SignInPageNew inputEmailInvalidAlreadyRegistered() {
         generalSeleniumMethods.inputEmailInvalid(emailField, emailInvalid);
         return this;
     }
 
+    @Step("Fill in 'Email' field with correct email")
     public SignInPageNew inputEmailAlreadyRegistered(String email) {
         generalSeleniumMethods.inputEmail(emailField, email);
         return this;
     }
 
+    @Step("Fill in 'Password' field with alphanumeric value")
     public SignInPageNew inputPasswordAlreadyRegistered(String password) {
         generalSeleniumMethods.inputPassword(passwordFieldAlreadyRegistered, password);
         return this;
     }
 
+    @Step("Fill in 'Password' field with valid value")
     public SignInPageNew inputPasswordAlreadyRegistered() {
         generalSeleniumMethods.inputPassword(passwordFieldAlreadyRegistered);
         return this;
     }
 
+    @Step("Fill in 'Password' field with incorrect password")
     public SignInPageNew inputPasswordInvalidAlreadyRegistered() {
         generalSeleniumMethods.inputPassword(passwordFieldAlreadyRegistered, passwordIncorrect);
         return this;
@@ -430,6 +475,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//div[@class='alert alert-danger']/p")
     private WebElement invalidMessageAlreadyRegisteredFirst;
 
+    @Step("Find invalid Message Already Registered First")
     public String invalidMessageAlreadyRegisteredFirstText() {
         return generalSeleniumMethods.getText(invalidMessageAlreadyRegisteredFirst);
     }
@@ -438,6 +484,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//div[@id='center_column']//child::li")
     private WebElement invalidMessageAlreadyRegisteredSecond;
 
+    @Step("Find invalid Message Already Registered Second")
     public String invalidMessageAlreadyRegisteredSecondText() {
         return generalSeleniumMethods.getText(invalidMessageAlreadyRegisteredSecond);
     }
@@ -446,6 +493,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//h1[text()='Create an account']")
     private WebElement personalInfoTitle;
 
+    @Step("Observe title of 'Create An Account Personal Info'")
     public String createAnAccountPersonalInfoTitle() {
         return generalSeleniumMethods.getText(personalInfoTitle);
     }
@@ -454,6 +502,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//h3[text()='Your personal information']")
     private WebElement yourPersonalInfoSectionTitle;
 
+    @Step("Observe title of 'Your Personal Info' section")
     public String yourPersonalInfoSectionTitle() {
         return generalSeleniumMethods.getText(yourPersonalInfoSectionTitle);
     }
@@ -462,6 +511,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//div[@class='clearfix']/label")
     private WebElement yourPersonalInfoTitle;
 
+    @Step("Observe title of 'Your Personal Info'")
     public String yourPersonalInfoTitle() {
         return generalSeleniumMethods.getText(yourPersonalInfoTitle);
     }
@@ -470,6 +520,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//label[@for='id_gender1']")
     private WebElement mrRadioButtonName;
 
+    @Step("Find 'Mr' Radio Button")
     public boolean mrRadioButtonDisplayed() {
         return generalSeleniumMethods.isDisplayed(mrRadioButtonName);
     }
@@ -478,6 +529,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//label[@for='id_gender2']")
     private WebElement mrsRadioButtonName;
 
+    @Step("Observe 'Mr' Radio Button")
     public boolean mrsRadioButtonDisplayed() {
         return generalSeleniumMethods.isDisplayed(mrsRadioButtonName);
     }
@@ -486,6 +538,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//div[@class='required form-group form-error']")
     private WebElement redSign;
 
+    @Step("Observe red sign")
     public boolean redSignDisplayed() {
         return generalSeleniumMethods.isDisplayed(redSign);
     }
@@ -494,6 +547,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//div[@class='required form-group form-ok']")
     private WebElement greenSign;
 
+    @Step("Observe green sign")
     public boolean greenSignDisplayed() {
         return generalSeleniumMethods.isDisplayed(greenSign);
     }
@@ -502,6 +556,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//li[contains(text(),'is invalid')]")
     private WebElement errorInput;
 
+    @Step("Observe 'error input' text")
     public boolean errorInputDisplayed() {
         return generalSeleniumMethods.isDisplayed(errorInput);
     }
@@ -510,10 +565,12 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='header']/div[2]/div/div/nav/div[1]/a/span")
     private WebElement customerAccount;
 
+    @Step("Observe 'Customer account' text")
     public boolean customerAccountDisplayed() {
         return generalSeleniumMethods.isDisplayed(customerAccount); // will be re-written
     }
 
+    @Step("Observe 'error input is invalid' text")
     public String errorInputIsInvalid() {
         return generalSeleniumMethods.getText(errorInput);
     }
@@ -522,10 +579,12 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//li[contains(text(),'This country')]")
     private WebElement errorInputRequires;
 
+    @Step("Observe 'error input requires'")
     public boolean errorInputRequiresDisplayed() {
         return generalSeleniumMethods.isDisplayed(errorInputRequires);
     }
 
+    @Step("Observe 'error input requires' text")
     public String errorInputRequires() {
         return generalSeleniumMethods.getText(errorInputRequires);
     }
@@ -534,6 +593,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//li[contains(text(),'phone number')]")
     private WebElement errorInputEmpty;
 
+    @Step("Observe 'error input empty field' text")
     public boolean errorInputEmptyField() {
         return generalSeleniumMethods.isDisplayed(errorInputEmpty);
     }
@@ -542,14 +602,17 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//p[@class='inline-infos']")
     private WebElement errorInputEmptyPhoneText;
 
+    @Step("Observe 'Input empty phone'")
     public boolean errorInputEmptyPhoneTextDisplayed() {
         return generalSeleniumMethods.isDisplayed(errorInputEmptyPhoneText);
     }
 
+    @Step("Observe 'Input empty phone' text")
     public String errorInputEmptyPhoneText() {
         return generalSeleniumMethods.getText(errorInputEmptyPhoneText);
     }
 
+    @Step("Observe 'Input empty phone' error")
     public String errorInputEmptyFieldError() {
         return generalSeleniumMethods.getText(errorInputEmpty);
     }
@@ -558,6 +621,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='header']/div[2]/div/div/nav/div[1]/a")
     private WebElement customerAccountText;
 
+    @Step("Observe 'Customer account' text")
     public String customerAccountText() {
         return generalSeleniumMethods.getText(customerAccountText); //will be re-written
     }
@@ -566,6 +630,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='id_gender1']")
     private WebElement mrRadioButton;
 
+    @Step("Observe 'Mr' button")
     public boolean mrRadioButtonEnabled() {
         return generalSeleniumMethods.isEnabled(mrRadioButton);
     }
@@ -574,6 +639,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='id_gender2']")
     private WebElement mrsRadioButton;
 
+    @Step("Observe 'Mrs' button")
     public boolean mrsRadioButtonEnabled() {
         return generalSeleniumMethods.isEnabled(mrsRadioButton);
     }
@@ -582,6 +648,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//div[@id='uniform-newsletter']")
     private WebElement signUpCheckBox;
 
+    @Step("Observe 'Sign up' checkbox")
     public boolean signUpCheckBox() {
         return generalSeleniumMethods.isEnabled(signUpCheckBox);
     }
@@ -590,6 +657,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='optin']")
     private WebElement offersCheckBox;
 
+    @Step("Observe 'Offer' checkbox")
     public boolean offersCheckBox() {
         return generalSeleniumMethods.isEnabled(offersCheckBox);
     }
@@ -598,6 +666,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//div[@class='checkbox']")
     private WebElement signUpCheckBoxName;
 
+    @Step("Observe 'Sign up' checkbox name")
     public String signUpCheckBoxName() {
         return generalSeleniumMethods.getText(signUpCheckBoxName);
     }
@@ -606,22 +675,27 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//label[@for='optin']")
     private WebElement offersCheckBoxName;
 
+    @Step("Observe 'Offer' checkbox name")
     public String offersCheckBoxName() {
         return generalSeleniumMethods.getText(offersCheckBoxName);
     }
 
+    @Step("Click on the 'Mr' radio button")
     public void clickMrRadioButton() {
         generalSeleniumMethods.clickElement(mrRadioButton);
     }
 
+    @Step("Click on the 'Mrs' radio button")
     public void clickMrsRadioButton() {
         generalSeleniumMethods.clickElement(mrsRadioButton);
     }
 
+    @Step("Click on the 'Sign Up' checkbox")
     public void clickSignUpCheckBox() {
         generalSeleniumMethods.clickElement(signUpCheckBox);
     }
 
+    @Step("Click on the 'Offer' checkbox")
     public void clickOffersCheckBox() {
         generalSeleniumMethods.clickElement(offersCheckBox);
     }
@@ -630,22 +704,27 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//a[@class='logout']")
     private WebElement signOutButton;
 
+    @Step("Click on the 'Sign Out' button")
     public void signOutButtonClick() {
         generalSeleniumMethods.clickElement(signOutButton);
     }
 
+    @Step("Select 'Mr' radio button")
     public boolean selectedStatusMr() {
         return generalSeleniumMethods.selectedStatus(mrRadioButton);
     }
 
+    @Step("Select 'Mrs' radio button")
     public boolean selectedStatusMrs() {
         return generalSeleniumMethods.selectedStatus(mrsRadioButton);
     }
 
+    @Step("Select 'Sign Up' check box")
     public boolean selectedSignUpCheckBox() {
         return generalSeleniumMethods.selectedStatus(signUpCheckBox);
     }
 
+    @Step("Select 'Offers' check box")
     public boolean selectedOffersCheckBox() {
         return generalSeleniumMethods.selectedStatus(offersCheckBox);
     }
@@ -654,10 +733,12 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='days']")
     private WebElement dropDownDays;
 
+    @Step("Select dropdown 'Days'")
     public int[] dropDownDaysAllOptions() {
         return generalSeleniumMethods.generalDropDownIntAllOptions(dropDownDays);
     }
 
+    @Step("Find a value of dropdown 'Days'")
     public SignInPageNew selectDropDownDaysOptionByValue() {
         Select select = new Select(dropDownDays);
         select.selectByValue("6");
@@ -669,6 +750,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='years']")
     private WebElement dropDownYears;
 
+    @Step("Observe dropdown 'Years'")
     public int[] dropDownYearsAllOptions() {
         return generalSeleniumMethods.generalDropDownIntAllOptions(dropDownYears);
     }
@@ -677,6 +759,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='months']")
     private WebElement dropDownMonths;
 
+    @Step("Observe dropdown 'Months'")
     public List<String> dropDownMonthsAllOptions() {
         return generalSeleniumMethods.generalConverterWebElementToList(dropDownMonths);
     }
@@ -685,6 +768,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='id_state']")
     private WebElement dropDownStates;
 
+    @Step("Observe dropdown 'States'")
     public List<String> dropDownStatesAllOptions() {
         return generalSeleniumMethods.generalConverterWebElementToList(dropDownStates);
     }
@@ -693,10 +777,12 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//button[@id='submitAccount']")
     private WebElement registerButton;
 
+    @Step("Click on the 'Register' button")
     public void clickRegisterButton() {
         generalSeleniumMethods.clickElement(registerButton);
     }
 
+    @Step("Check if 'Email' field is empty")
     public boolean emptyFieldEmail() {
         return generalSeleniumMethods.iFemptyField(emailField);
     }
@@ -705,6 +791,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='customer_firstname']")
     private WebElement firstNameField;
 
+    @Step("Check if 'First Name' field is empty")
     public boolean emptyFieldFirstName() {
         return generalSeleniumMethods.iFemptyField(firstNameField);
     }
@@ -713,22 +800,27 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='customer_lastname']")
     private WebElement lastNameField;
 
+    @Step("Check if 'Last Name' field is empty")
     public boolean emptyFieldLastName() {
         return generalSeleniumMethods.iFemptyField(lastNameField);
     }
 
+    @Step("Check if 'Password' field is empty")
     public boolean emptyFieldPassword() {
         return generalSeleniumMethods.iFemptyField(passwordFieldAlreadyRegistered);
     }
 
+    @Step("Find value of 'Email' field on the 'Home' page")
     public String valueOfEmailFieldHomePage() {
         return generalSeleniumMethods.valueOfField(emailAddressFieldCreateAnAccount, "value");
     }
 
+    @Step("Check value of 'Email' field on the 'Home' page")
     public String valueOfEmailField() {
         return generalSeleniumMethods.valueOfField(emailField, "value");
     }
 
+    @Step("Check value of 'First Name' field on the 'Home' page")
     public String valueOfFirstNameOneField() {
         return generalSeleniumMethods.valueOfField(firstNameField, "value");
     }
@@ -737,10 +829,12 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='firstname']")
     private WebElement firstNameTwoField;
 
+    @Step("Check value of 2d 'First Name' field on the 'Home' page")
     public String valueOfFirstNameTwoField() {
         return generalSeleniumMethods.valueOfField(firstNameTwoField, "value");
     }
 
+    @Step("Check value of 'Last Name' field on the 'Home' page")
     public String valueOfLastNameOneField() {
         return generalSeleniumMethods.valueOfField(lastNameField, "value");
     }
@@ -749,6 +843,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='lastname']")
     private WebElement lastNameTwoField;
 
+    @Step("Check value of 2d 'Last Name' field on the 'Home' page")
     public String valueOfLastNameTwoField() {
         return generalSeleniumMethods.valueOfField(lastNameTwoField, "value");
     }
@@ -757,23 +852,28 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='center_column']/div/ol")
     private WebElement setOfErrors;
 
+    @Step("Observe list of errors")
     public List<String> getListOfOptions() {
         generalSeleniumMethods.getListOfOptions(setOfErrors);
         return (List<String>) this;
     }
 
+    @Step("Delete value of 'Email' field")
     public boolean deleteValueEmail() {
         return generalSeleniumMethods.deleteValue(emailField);
     }
 
+    @Step("Delete value of 'First Name' field")
     public boolean deleteValueFirstName() {
         return generalSeleniumMethods.deleteValue(firstNameField);
     }
 
+    @Step("Delete value of 'Last Name' field")
     public boolean deleteValueLastName() {
         return generalSeleniumMethods.deleteValue(lastNameField);
     }
 
+    @Step("Delete value of 'Password' field")
     public boolean deleteValuePassword() {
         return generalSeleniumMethods.deleteValue(passwordFieldAlreadyRegistered);
     }
@@ -782,6 +882,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='id_country']")
     private WebElement countryDropDown;
 
+    @Step("Observe 'Country' dropdown options")
     public String countryDropDownFirstOption() {
         Actions action = new Actions(driver);
         action.moveToElement(countryDropDown).build().perform();
@@ -796,6 +897,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='id_state']")
     private WebElement statesDropDown;
 
+    @Step("Observe 'States' dropdown options\"")
     public String statesDropDownOptionByValue() {
         Actions action = new Actions(driver);
         action.moveToElement(statesDropDown).build().perform();
@@ -806,6 +908,7 @@ public class SignInPageNew extends BasePageObject {
         return select.getFirstSelectedOption().getText();
     }
 
+    @Step("Select 1st value of 'States' dropdown options")
     public String statesDropDownOptionFirst() {
         Actions action = new Actions(driver);
         action.moveToElement(statesDropDown).build().perform();
@@ -820,10 +923,12 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//div[@class='alert alert-danger']")
     private WebElement errorAlertFull;
 
+    @Step("Find error allert")
     public String errorAlertText() {
         return generalSeleniumMethods.getText(errorAlertFull);
     }
 
+    @Step("Observe error allert")
     public boolean errorAlertDisplayed() {
         return generalSeleniumMethods.isDisplayed(errorAlertFull);
     }
@@ -832,6 +937,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//label[@for='customer_firstname']")
     private WebElement firstNameFieldName;
 
+    @Step("Observe value of 'First Name' field")
     public String firstNameFieldOneName() {
         return generalSeleniumMethods.getText(firstNameFieldName);
     }
@@ -840,6 +946,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//label[@for='firstname']")
     private WebElement firstNameTwoFieldName;
 
+    @Step("Observe value of 2d 'First Name' field")
     public String firstNameFieldTwoName() {
         return generalSeleniumMethods.getText(firstNameTwoFieldName);
     }
@@ -848,6 +955,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//label[@for='customer_lastname']")
     private WebElement lastNameFieldName;
 
+    @Step("Observe value of 'Last Name' field")
     public String lastNameFieldTOneName() {
         return generalSeleniumMethods.getText(lastNameFieldName);
     }
@@ -856,6 +964,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//label[@for='lastname']")
     private WebElement lastNameTwoFieldName;
 
+    @Step("Observe value of 2d 'First Name' field")
     public String lastNameFieldTwoName() {
         return generalSeleniumMethods.getText(lastNameTwoFieldName);
     }
@@ -864,6 +973,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//label[@for='email']")
     private WebElement emailFieldName;
 
+    @Step("Observe name of 'Email' field")
     public String emailFieldName() {
         return generalSeleniumMethods.getText(emailFieldName);
     }
@@ -872,6 +982,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//label[@for='passwd']")
     private WebElement passwordFieldName;
 
+    @Step("Observe name of 'Password' field")
     public String passwordFieldName() {
         return generalSeleniumMethods.getText(passwordFieldName);
     }
@@ -880,6 +991,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//span[contains(text(),'(Five')]")
     private WebElement passwordFieldHelpText;
 
+    @Step("Observe help text of 'Password' field")
     public String passwordFieldHelpText() {
         return generalSeleniumMethods.getText(passwordFieldHelpText);
     }
@@ -888,6 +1000,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//label[contains(text(),'Date of Birth')]")
     private WebElement dateOfBirthFieldName;
 
+    @Step("Observe name of 'Date of Birth' field")
     public String dateOfBirthFieldName() {
         return generalSeleniumMethods.getText(dateOfBirthFieldName);
     }
@@ -896,6 +1009,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[text()='Your address']")
     private WebElement yourAddressSectionName;
 
+    @Step("Observe name of 'Your address' section")
     public String yourAddressSectionName() {
         return generalSeleniumMethods.getText(yourAddressSectionName);
     }
@@ -904,6 +1018,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//label[@for='company']")
     private WebElement companyFieldName;
 
+    @Step("Observe name of 'Company' field")
     public String companyFieldName() {
         return generalSeleniumMethods.getText(companyFieldName);
     }
@@ -912,6 +1027,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//label[@for='address1']")
     private WebElement addressFieldName;
 
+    @Step("Observe name of 'Address' field")
     public String addressFieldName() {
         return generalSeleniumMethods.getText(addressFieldName);
     }
@@ -920,6 +1036,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//span[contains(text(),'Street')]")
     private WebElement addressFieldHelpText;
 
+    @Step("Observe help text of 'Address' field")
     public String addressFieldHelpText() {
         return generalSeleniumMethods.getText(addressFieldHelpText);
     }
@@ -928,6 +1045,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//label[@for='city']")
     private WebElement cityFieldName;
 
+    @Step("Observe name of 'City' field")
     public String cityFieldName() {
         return generalSeleniumMethods.getText(cityFieldName);
     }
@@ -936,6 +1054,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//label[@for='id_country']")
     private WebElement countryFieldName;
 
+    @Step("Observe name of 'Country' field")
     public String countryFieldName() {
         return generalSeleniumMethods.getText(countryFieldName);
     }
@@ -944,6 +1063,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//label[@for='other']")
     private WebElement additionalInfoFieldName;
 
+    @Step("Observe name of 'Additional info' field")
     public String additionalInfoFieldName() {
         return generalSeleniumMethods.getText(additionalInfoFieldName);
     }
@@ -952,6 +1072,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//p[contains(text(),'You must')]")
     private WebElement additionalInfoHelpText;
 
+    @Step("Observe help text of 'Additional info' field")
     public String additionalInfoHelpText() {
         return generalSeleniumMethods.getText(additionalInfoHelpText);
     }
@@ -960,6 +1081,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//label[@for='phone']")
     private WebElement homePhoneFieldName;
 
+    @Step("Observe name of 'Phone' field")
     public String homePhoneFieldName() {
         return generalSeleniumMethods.getText(homePhoneFieldName);
     }
@@ -968,6 +1090,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//label[@for='phone_mobile']")
     private WebElement mobilePhoneFieldName;
 
+    @Step("Observe name of 'Mobile' field")
     public String mobilePhoneFieldName() {
         return generalSeleniumMethods.getText(mobilePhoneFieldName);
     }
@@ -976,6 +1099,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//label[@for='alias']")
     private WebElement assignAliasFieldName;
 
+    @Step("Observe name of 'Assign Alias' field")
     public String assignAliasFieldName() {
         return generalSeleniumMethods.getText(assignAliasFieldName);
     }
@@ -984,6 +1108,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//*[@id='alias']")
     private WebElement assignAliasFieldValue;
 
+    @Step("Observe value of 'Assign Alias' field")
     public String assignAliasFieldValue() {
         return generalSeleniumMethods.valueOfField(assignAliasFieldValue, "value");
     }
@@ -992,6 +1117,7 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//button[@id='submitAccount']")
     private WebElement registerButtonName;
 
+    @Step("Observe name of 'Register' button")
     public String registerButtonName() {
         return generalSeleniumMethods.getText(registerButtonName);
     }
@@ -1000,30 +1126,37 @@ public class SignInPageNew extends BasePageObject {
     @FindBy(xpath = "//span[text()='Required field']")
     private WebElement requiredText;
 
+    @Step("Observe text of 'Register' button")
     public String requiredText() {
         return generalSeleniumMethods.getText(requiredText);
     }
 
+    @Step("Input letters into 'First Name' field")
     public void inputValueFirstNameLetters() {
         generalSeleniumMethods.inputValueAlphabetic(firstNameField);
     }
 
+    @Step("Input digits into 'First Name' field")
     public void inputValueFirstNameDigits() {
         generalSeleniumMethods.inputValueNumeric(firstNameField);
     }
 
+    @Step("Input letters into 'Last Name' field")
     public void inputValueLastNameLetters() {
         generalSeleniumMethods.inputValueAlphabetic(lastNameField);
     }
 
+    @Step("Input digits into 'Last Name' field")
     public void inputValueLastNameDigits() {
         generalSeleniumMethods.inputValueNumeric(lastNameField);
     }
 
+    @Step("Input value into 'Password' field")
     public void inputValuePassword(String value) {
         generalSeleniumMethods.inputPassword(passwordFieldAlreadyRegistered, value);
     }
 
+    @Step("Click anywhere on the screen")
     public void clickAnyWhere() throws AWTException {
         Actions actions = new Actions(driver);
         Robot robot = new Robot();
